@@ -21,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SheardModule,
+    
   ],
   declarations: [DashboardComponent]
 })

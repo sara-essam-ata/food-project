@@ -84,3 +84,14 @@ button{
     opacity: 0.8;
   }
 }
+.page-header
+{    
+    background-image: url(assets/images/header-bg.png);
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+    border-radius: 15px;
+    span{
+      color: #DFE0E0;
+    }
+}

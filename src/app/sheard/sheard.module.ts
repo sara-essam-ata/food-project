@@ -10,23 +10,24 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent,SidebarComponent, HomeComponent
-  ],
+    NavbarComponent,SidebarComponent, HomeComponent,DeleteComponent ],
   imports: [
     CommonModule,
     MatButtonModule, MatDividerModule, MatIconModule,HttpClientModule,ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot({}), 
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
     
   ],
   exports:[
     MatButtonModule, MatDividerModule, MatIconModule,HttpClientModule,ReactiveFormsModule,FormsModule
-     ,MatDialogModule,NavbarComponent,SidebarComponent,HomeComponent
-  ]
+     ,MatDialogModule,NavbarComponent,SidebarComponent,HomeComponent,MatPaginatorModule, DeleteComponent]
 })
 export class SheardModule {}

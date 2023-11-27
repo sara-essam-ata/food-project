@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
+import { ChangePasswordComponent } from '../auth/change-password/change-password.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 
 interface IMenu{
@@ -16,7 +19,8 @@ interface IMenu{
 })
 export class DashboardComponent implements OnInit {
   
-  constructor(private _AuthService:AuthService, private router:Router) { }
+  constructor(private _AuthService:AuthService, private router:Router,
+     private toastr:ToastrService,public dialog: MatDialog,) { }
   isOpened:boolean=true;
   ngOnInit() {
   }
@@ -71,4 +75,21 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/auth'])
 
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      data: {},
+      width: '50%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+
+        // localStorage.removeItem('userToken');
+        // localStorage.removeItem('role');
+        // localStorage.removeItem('userName');
+        // this.router.navigate(['/auth']);
+
+      }
+    });
+  }  
 }

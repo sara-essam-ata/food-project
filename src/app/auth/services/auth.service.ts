@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { IChangePassword } from 'src/app/models/ChangePassword';
 import { ILogin } from 'src/app/models/login';
 import { IResetPassword } from 'src/app/models/reset-password';
 @Injectable({
@@ -36,5 +37,8 @@ export class AuthService {
   }
   onResetPassword(data:IResetPassword){
     return this._HttpClient.post('Users/Reset', data)
+  }
+  onChangePassword(data:IChangePassword){
+    return this._HttpClient.put('Users/ChangePassword', data)
   }
 }

@@ -29,7 +29,7 @@ export class LoginComponent {
         this._AuthService.getProfile()
       },
       error:(err:any)=>{
-        this.toastr.error('check your email and password' , 'error!');
+        this.toastr.error('check your email and password' , 'error!');        
       },
       complete:()=> {
         this.router.navigate(['/dashboard']);

@@ -5,6 +5,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { Routes, RouterModule } from '@angular/router';
 import { SheardModule } from '../sheard/sheard.module';
 import { RequestResetPasswordComponent } from './request-reset-password/request-reset-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login' , pathMatch:'full'},
@@ -17,12 +18,14 @@ const routes: Routes = [
   declarations: [
     LoginComponent,
     ResetPasswordComponent,
-    RequestResetPasswordComponent
+    RequestResetPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SheardModule,
-  ]
+  ],
+  exports: []
 })
 export class AuthModule { }
