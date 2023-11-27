@@ -10,7 +10,6 @@ import { CategoriesService } from '../../services/categories.service';
 
 export class  AddEditCategoryComponent {
   constructor(public dialogRef: MatDialogRef<AddEditCategoryComponent>, private _CategoriesService:CategoriesService,
-    @Inject(MAT_DIALOG_DATA) public data:any,
     ) {}
   
   categoryName:string='';

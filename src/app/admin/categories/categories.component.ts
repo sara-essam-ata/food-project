@@ -100,19 +100,16 @@ export class CategoriesComponent implements OnInit {
       data: categoryData,      
       width: '40%'
     });
-    console.log();
+    console.log(categoryData.name);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log(result);
-        
-        console.log(result.name);
-        console.log(result.id);
-        this.onEditCategory(result.id, result.name);
+        this.onEditCategory(categoryData.id,result);
       }
     });
   }
-  onEditCategory(id:number, data:string){
-    this._CategoriesService.editCategory(id,data).subscribe({
+  onEditCategory(id:number, name:string){
+    this._CategoriesService.editCategory(id,name).subscribe({
       next:(res)=>{
         console.log(res);
       },
@@ -121,7 +118,8 @@ export class CategoriesComponent implements OnInit {
       },
       complete:()=>{
         console.log('fine');
-        
+        this.ToastrService.success('category updated','Success');
+        this.getTableData();
       }
     })
   }
