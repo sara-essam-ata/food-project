@@ -17,7 +17,7 @@
                         <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-lock"></i></span>
                         <span [ngClass]="{'d-none': !isOpened}" class="">Change Password</span>
                     </div>
-                    <div (click)="logOut()" class="item">
+                    <div (click)="openLogoutDialog()" class="item">
                         <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-right-from-bracket"></i></span>
                         <span [ngClass]="{'d-none': !isOpened}" class="">Logout</span>
                     </div>

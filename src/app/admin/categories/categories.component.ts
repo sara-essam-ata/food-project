@@ -46,7 +46,7 @@ export class CategoriesComponent implements OnInit {
   openAddDialog(): void {
     const dialogRef = this.dialog.open(AddEditCategoryComponent, {
       data: {},
-      width: '40%'
+      width: '30%'
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
@@ -72,7 +72,7 @@ export class CategoriesComponent implements OnInit {
   openDeleteDialog(categoryData:any): void {
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: categoryData,
-      width: '40%'
+      width: '30%'
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
@@ -98,7 +98,7 @@ export class CategoriesComponent implements OnInit {
   openEditCategory(categoryData:any){
     const dialogRef = this.dialog.open(AddEditCategoryComponent, {
       data: categoryData,      
-      width: '40%'
+      width: '30%'
     });
     console.log(categoryData.name);
     dialogRef.afterClosed().subscribe(result => {

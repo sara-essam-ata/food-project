@@ -4,6 +4,7 @@ import { Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { LogoutComponent } from '../logout/logout.component';
 
 interface IMenu{
   title:string,
@@ -66,17 +67,17 @@ export class SidebarComponent {
      isActive: this.isUser()
    }
  ]
- logOut(){
-   localStorage.removeItem('userToken');
-   localStorage.removeItem('role');
-   localStorage.removeItem('userName');
-   this.router.navigate(['/auth'])
+//  logOut(){
+//    localStorage.removeItem('userToken');
+//    localStorage.removeItem('role');
+//    localStorage.removeItem('userName');
+//    this.router.navigate(['/auth'])
 
- }
+//  }
  openDialog(): void {
    const dialogRef = this.dialog.open(ChangePasswordComponent, {
      data: {},
-     width: '50%'
+     width: '35%'
    });
 
    dialogRef.afterClosed().subscribe(result => {
@@ -85,4 +86,17 @@ export class SidebarComponent {
      }
    });
  }  
-}
+ openLogoutDialog(): void{
+  const dialogRef = this.dialog.open(LogoutComponent, {
+    data: {},
+    width: '25%'
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if(result){
+      
+    }
+  });
+}  
+ }
+

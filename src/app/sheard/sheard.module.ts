@@ -14,11 +14,12 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteComponent } from './delete/delete.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent,SidebarComponent, HomeComponent,DeleteComponent ],
+    NavbarComponent,SidebarComponent, HomeComponent,DeleteComponent,LogoutComponent ],
   imports: [
     CommonModule,
     MatButtonModule, MatDividerModule, MatIconModule,HttpClientModule,ReactiveFormsModule,
@@ -34,6 +35,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
   exports:[
     MatButtonModule, MatDividerModule, MatIconModule,HttpClientModule,ReactiveFormsModule,FormsModule
      ,MatDialogModule,NavbarComponent,SidebarComponent,HomeComponent,MatPaginatorModule, DeleteComponent,
-     NgxDropzoneModule]
+     NgxDropzoneModule,LogoutComponent]
 })
 export class SheardModule {}

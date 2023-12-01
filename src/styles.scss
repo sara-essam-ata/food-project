@@ -87,8 +87,8 @@ button{
     }
   }
   &.outline-primary{
-    border: 1px solid #4AA35A;
-    color: #4AA35A;
+    border: 2px solid #4AA35A !important;
+    color: #4AA35A !important;
     &:hover{
       opacity: 0.8;
       color: #4AA35A;

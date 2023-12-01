@@ -39,7 +39,7 @@ export class LoginComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(RequestResetPasswordComponent, {
       data: {},
-      width: '40%'
+      width: '35%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
