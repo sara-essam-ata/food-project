@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { RequestResetPasswordComponent } from '../request-reset-password/request-reset-password.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Token } from '@angular/compiler';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

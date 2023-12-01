@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { adminGuard } from '../guards/admin.guard';
 import { userGuard } from '../guards/user.guard';
 import { HomeComponent } from '../sheard/home/home.component';
+
 const routes: Routes = [
   {path:'', component:DashboardComponent, children:[
       {path: '', redirectTo:'home', pathMatch:'full'},

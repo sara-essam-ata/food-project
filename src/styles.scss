@@ -63,7 +63,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   p{
     color: rgba(73, 73, 73, 0.6);
   }
-  input{
+  input,select,textarea{
     background-color: #F7F7F7 !important;
   }
   i{
@@ -79,9 +79,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 button{
-  background-color: #4AA35A !important;
-  &:hover{
-    opacity: 0.8;
+  &.primary{
+    background-color: #4AA35A !important;
+    color: #fff !important;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+  &.outline-primary{
+    border: 1px solid #4AA35A;
+    color: #4AA35A;
+    &:hover{
+      opacity: 0.8;
+      color: #4AA35A;
+    }
   }
 }
 .page-header

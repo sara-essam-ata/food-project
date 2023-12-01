@@ -1,32 +1,12 @@
 <section >
     <div class="container-fluid">
         <div class="row">
-            <div class=" px-0 bg-third sidebar  vh-100" [class]="isOpened?'col-2':'col-1'">
-                <div class=" ">
-                    <div class=" mt-3" (click)="isOpened=!isOpened">
-                        <img class="w-75" src="../../assets/images/side-icon.png" alt="">
-                    </div>
-                    <ng-container *ngFor="let item of menu">
-                        <a class="d-block text-decoration-none" [routerLink]="item.link" routerLinkActive="bg-active" 
-                        *ngIf="item.isActive">
-                            <div class="item text-white py-2 ">
-                                <span class="mx-2"><i [class]="item.icon"></i></span>
-                                <span [ngClass]="{'d-none': !isOpened}">{{item.title}}</span>
-                            </div>
-                        </a>
-                    </ng-container>
-                        <div class="item text-white mt-3 w-100">
-                            <span class="mx-2 "><i class="fa-solid fa-lock"></i></span>
-                            <span (click)="openDialog()" [ngClass]="{'d-none': !isOpened}" class="">Change Password</span>
-                        </div>
-                        <div (click)="logOut()" class="item text-white w-100 mt-3">
-                            <span class="mx-2"><i class="fa-solid fa-right-from-bracket"></i></span>
-                            <span [ngClass]="{'d-none': !isOpened}" class="">Logout</span>
-                        </div>
-                    
+            <div class="col-2 px-0" >
+                <div>
+                    <app-sidebar></app-sidebar>
                 </div>
             </div>
-            <div class="" [class]="isOpened?'col-10':'col-11'">
+            <div class="col-10 " >
                 <div>
                     <app-navbar></app-navbar>
                     <router-outlet></router-outlet>

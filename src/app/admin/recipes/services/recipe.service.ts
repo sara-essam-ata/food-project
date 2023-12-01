@@ -1,13 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IRecipeTable } from '../models/recipe';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+
+    providedIn: 'root',
+  
+})
 export class RecipeService {
 
 constructor(private  _HttpClient:HttpClient) { }
-    getRecipes(data:IRecipeTable):Observable<any>{
-        return this._HttpClient.get('Recipe')
+    getRecipes(data:any):Observable<any>{
+        return this._HttpClient.get('Recipe',{params:data})
+    }
+    addRecipe(data:any){
+        return this._HttpClient.post('Recipe' , data)
+    }
+    deleteRecipe(id:number){
+        return this._HttpClient.delete(`Recipe/${id}`)
     }
 }

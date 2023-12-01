@@ -1,13 +1,12 @@
-import { ICategory } from "../../categories/models/category";
 
 export interface IRecipeTable {
     pageNumber: number,
     pageSize: number,
-    data: IRecipeData[],
+    data: IRecipe[],
     totalNumberOfRecords: number,
-    totalNumberOfPages: number
+    totalNumberOfPages: number,
 }
-export interface IRecipeData {
+export interface IRecipe {
     id: 46,
     name: string,
     imagePath: string,
@@ -16,9 +15,15 @@ export interface IRecipeData {
     creationDate: string,
     modificationDate: string,
     category: ICategory[],
-    tag: IRecipeTag
+    tag: ITag
 }
-export interface IRecipeTag {
+export interface ITag {
+    id: number,
+    name: string,
+    creationDate: string,
+    modificationDate: string
+}
+export interface ICategory {
     id: number,
     name: string,
     creationDate: string,

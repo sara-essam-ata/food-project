@@ -9,6 +9,10 @@ import { GlobalInterceptor } from './auth/interceptors/global.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SheardModule } from './sheard/sheard.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LoadingInterceptor } from './auth/interceptors/loading.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,12 +26,21 @@ import { SheardModule } from './sheard/sheard.module';
       closeButton:true
     }),
     DashboardModule,
-    SheardModule
+    SheardModule,
+    NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide:HTTP_INTERCEPTORS,
       useClass:GlobalInterceptor,
+      multi: true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoadingInterceptor,
       multi: true
     }
   ],

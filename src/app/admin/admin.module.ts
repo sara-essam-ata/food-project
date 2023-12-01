@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SheardModule } from '../sheard/sheard.module';
-
 const routes: Routes = [
   {path:'', component:AdminComponent},
   {path:'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},
@@ -16,6 +15,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SheardModule,
+
   ],
   declarations: [AdminComponent]
 })

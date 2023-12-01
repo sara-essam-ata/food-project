@@ -128,10 +128,6 @@ export class CategoriesComponent implements OnInit {
     this.pageNumber= this.tableResponse?.pageNumber;
     this.pageSize= e.pageSize;
     this.getTableData();
-    // this.pageEvent = e;
-    // this.length = e.length;
-    // this.pageSize = e.pageSize;
-    // this.pageIndex = e.pageIndex;
   }
 
 }
