@@ -87,7 +87,7 @@ button{
     }
   }
   &.outline-primary{
-    border: 2px solid #4AA35A !important;
+    border: 1px solid #4AA35A !important;
     color: #4AA35A !important;
     &:hover{
       opacity: 0.8;
@@ -105,4 +105,6 @@ button{
     span{
       color: #DFE0E0;
     }
+    
 }
+

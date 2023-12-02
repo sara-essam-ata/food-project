@@ -3,7 +3,7 @@ import { FormControl, FormGroup} from '@angular/forms';
 import { HelperService } from 'src/app/services/helper.service';
 import { RecipeService } from '../../services/recipe.service';
 import { ICategory, ITag } from '../../models/recipe';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -24,7 +24,9 @@ export class AddEditRecipeComponent implements OnInit {
     categoriesIds: new FormControl(null)
   })
   constructor(private _HelperService:HelperService, private _RecipeService:RecipeService, 
-    private Router:Router, private _ToastrService:ToastrService) { }
+    private Router:Router, private _ToastrService:ToastrService,private _ActivatedRoute:ActivatedRoute) {
+      _ActivatedRoute.snapshot.params['id'];
+     }
 
   ngOnInit() {
     this.getAlltags();

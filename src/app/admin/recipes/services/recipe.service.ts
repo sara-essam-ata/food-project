@@ -13,6 +13,9 @@ constructor(private  _HttpClient:HttpClient) { }
     getRecipes(data:any):Observable<any>{
         return this._HttpClient.get('Recipe',{params:data})
     }
+    getRecipeByid(id:number){
+        return this._HttpClient.get(`Recipe/${id}`)
+    }
     addRecipe(data:any){
         return this._HttpClient.post('Recipe' , data)
     }
