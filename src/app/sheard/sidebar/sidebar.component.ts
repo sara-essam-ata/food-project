@@ -57,7 +57,7 @@ export class SidebarComponent {
    {
      title: 'userRecipes',
      icon: 'fa-solid fa-calendar-day',
-     link: '/dashboard/user/userRecipes',
+     link: '/dashboard/user/recipes',
      isActive: this.isUser()
    },
    {
