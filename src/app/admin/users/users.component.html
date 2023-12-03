@@ -16,84 +16,51 @@
   </div>
 </section>
 <section>
-  
   <div class="container py-4">
         <div class="row justify-content-between">
           <div class="col-8">
-            <!-- <input class="form-control me-2"  type="text" [(ngModel)]="searchValue" (keyup)="getTableData()" placeholder="Search" > -->
+            <input class="form-control me-2"  type="text" [(ngModel)]="searchValue" (keyup)="getTableData()" placeholder="Search" >
           </div>
-          <div class="col-2">
-            <!-- <select [(ngModel)]="tagId"  (change)="getTableData()" class="form-select" aria-label="Default select example"> -->
-              <!-- <option selected>All Tags</option> -->
-              <!-- <option *ngFor="let item of tags" [value]="item.id">{{item.name}}</option> -->
-            <!-- </select> -->
-          </div>
-          <div class="col-2">
-            <!-- <select [(ngModel)]="categoryId" (change)="getTableData()" class="form-select" aria-label="Default select example">
-              <option selected>All Category</option>
-              <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
-            </select> -->
+          <div class="col-3">
+            <select [(ngModel)]="groupId"  (change)="getTableData()" class="form-select" aria-label="Default select example"> -->
+              <option value="0">All</option>
+              <option [value]="1">Super Admin</option>
+              <option [value]="2">System User</option>
+           </select> 
           </div>
         </div>
-    
   </div>
-  
+
 <div>
   <table class="table table-striped">
       <thead >
         <tr >
           <th>Name</th>
           <th>Image</th>
-          <th>Price</th>
-          <th>Description</th>
-          <th>Tag</th>
-          <th>Category</th>
-          <th>Actions</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Country</th>
+          <th>Role</th>
+          <th>Join Date</th>
+          <th>Actions</th>          
         </tr>
       </thead>
-      <!-- <tbody *ngIf="tableData.length>0">
+      <tbody *ngIf="tableData.length>0">
         <tr *ngFor="let item of tableData" >
-          <td>{{item.name}}</td>
+          <td>{{item.userName}}</td>
           <td class="w-25"><img [src]="'https://upskilling-egypt.com/'+item.imagePath" class="w-50 vh-50" alt=""></td>          
-          <td>{{item.price}}</td>
-          <td>{{item.description}}</td>
-          <td>{{item.tag.name}}</td>
-          <td>
-            <ng-container *ngIf="item.category.length>0">
-              <span *ngFor="let itemCategory of item.category">{{itemCategory.name}}</span>
-            </ng-container>
-            <ng-container *ngIf="item.category.length==0">
-              <span>No Category</span>
-            </ng-container>
+          <td>{{item.email}}</td>
+          <td>{{item.phoneNumber}}</td>
+          <td>{{item.country}}</td>
+          <td>{{item.group.name}}</td>
+          <td>{{item.creationDate|date:'dd/mm/yyyy'}}</td>
+          <td class="text-center">
+            <a (click)="openDeleteDialog(item)" class=" text-danger"><i class="fa-regular fa-trash-can"></i></a>
           </td>
-          <td>
-            <div class="dropdown text-center">
-              <a class="dropdown-toggle text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-ellipsis fa-lg"></i>
-              </a>
-              <ul class="dropdown-menu ">
-                <li><a class="dropdown-item ">
-                  <span><i class="fa-regular fa-eye"></i></span>
-                  <span class="p-2">View</span>
-                </a></li>
-                <li><a class="dropdown-item ">
-                  <span><i class="fa-regular fa-pen-to-square"></i></span>
-                  <span class="p-2">Edit</span>
-                </a></li>
-                <li><a class="dropdown-item " (click)="openDeleteDialog(item)">
-                  <span><i class="fa-solid fa-delete-left "></i></span>
-                  <span class="p-2">Delete</span>
-                </a></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <div *ngIf="tableData.length==0">
-        No Data
-      </div> -->
+
+         
     </table>
-    <!-- <mat-paginator #paginator
+    <mat-paginator #paginator
                 class="demo-paginator"
                 (page)="handlePageEvent($event)"
                 [length]="tableResponse?.totalNumberOfRecords"
@@ -101,7 +68,7 @@
                 [pageSizeOptions]="[5,10,25]"
                 [pageIndex]="tableResponse?.pageNumber"
                 aria-label="Select page">
-      </mat-paginator> -->
+      </mat-paginator>
 </div>
 </section>
 

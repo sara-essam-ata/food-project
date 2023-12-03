@@ -6,6 +6,8 @@ import { SheardModule } from 'src/app/sheard/sheard.module';
 
 const routes: Routes = [
   {path:'', component:UsersComponent},
+  {path:'users', component:UsersComponent},
+
 ];
 
 @NgModule({

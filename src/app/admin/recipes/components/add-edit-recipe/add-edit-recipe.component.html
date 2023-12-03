@@ -1,8 +1,8 @@
 <div class="container">
-  <form [formGroup]="recipeForm" (ngSubmit)="onSupmit(recipeForm)">
+  <form [formGroup]="recipeForm" (ngSubmit)="onSupmit(recipeForm)" >
     <div class="row card-auth shadow-sm">
       <div class="col-md-10 mx-auto">
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" >
           <span class="input-group-text"><i class="fa-regular fa-calendar-plus"></i></span>
           <input formControlName="name" type="text" class="form-control" placeholder="Recipe Name" >
         </div>
@@ -36,16 +36,24 @@
         </div>
         <div>
           <ngx-dropzone class="mb-3" (change)="onSelect($event)" [multiple]="false">
-            <ngx-dropzone-label>
+
+            <ngx-dropzone-label *ngIf="!imgSrc">
                 <i class="fa-solid fa-arrow-up-from-bracket d-block fs-2 pb-3"></i>
-                  Drag & Drop or <span class="main-color">Choose a Item Image</span> to Upload</ngx-dropzone-label>
+                  Drag & Drop or <span class="main-color">Choose a Item Image</span> to Upload
+            </ngx-dropzone-label>
+
+            <ngx-dropzone-label *ngIf="imgSrc">
+              <img [src]="imgSrc" class="w-25" alt="">
+            </ngx-dropzone-label>
+
             <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
                  [removable]="true" (removed)="onRemove(f)">
             </ngx-dropzone-image-preview>
+
           </ngx-dropzone>
         </div>
         <button type="button" routerLink="/dashboard/admin/recipes" class="btn outline-primary">Cancle</button>
-        <button type="submit"  class=" ms-3 btn primary">Save</button>
+        <button type="submit"  class=" ms-3 btn primary" >Save</button>
       </div>
     </div>
   </form>

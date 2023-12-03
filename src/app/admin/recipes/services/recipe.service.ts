@@ -19,6 +19,9 @@ constructor(private  _HttpClient:HttpClient) { }
     addRecipe(data:any){
         return this._HttpClient.post('Recipe' , data)
     }
+    editRecipe(id:number,data:any){
+        return this._HttpClient.put(`Recipe/${id}` , data)
+    }
     deleteRecipe(id:number){
         return this._HttpClient.delete(`Recipe/${id}`)
     }

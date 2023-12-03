@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ICategory, IRecipe, IRecipeTable, ITag } from './models/recipe';
 import { RecipeService } from './services/recipe.service';
 import { PageEvent } from '@angular/material/paginator';
@@ -6,6 +6,7 @@ import { DeleteComponent } from 'src/app/sheard/delete/delete.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HelperService } from 'src/app/services/helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
@@ -13,6 +14,7 @@ import { HelperService } from 'src/app/services/helper.service';
   styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent implements OnInit {
+  
   tableResponse: IRecipeTable | undefined;
   tableData: IRecipe[] = [];
   pageSize = 10;
@@ -28,7 +30,8 @@ export class RecipesComponent implements OnInit {
     private _RecipeService: RecipeService,
     private _HelperService: HelperService,
     private dialog: MatDialog,
-    private _ToastrService: ToastrService
+    private _ToastrService: ToastrService,
+    private Router:Router
   ) {}
 
   ngOnInit(): void {
@@ -83,13 +86,14 @@ export class RecipesComponent implements OnInit {
   openDeleteDialog(recipeData: any): void {
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: recipeData,
-      width: '40%'
+      width: '30%'
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         console.log(result.id);
         this.onDeleteRecipe(result.id);
+        this.Router.navigate(['/dashboard/admin/recipes'])
       }
     });
   }
@@ -109,4 +113,5 @@ export class RecipesComponent implements OnInit {
       }
     });
   }
+
 }

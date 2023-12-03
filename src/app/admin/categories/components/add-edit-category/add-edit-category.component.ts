@@ -9,8 +9,10 @@ import { CategoriesService } from '../../services/categories.service';
 })
 
 export class  AddEditCategoryComponent {
-  constructor(public dialogRef: MatDialogRef<AddEditCategoryComponent>, private _CategoriesService:CategoriesService,
-    ) {}
+  constructor(
+    public dialogRef: MatDialogRef<AddEditCategoryComponent>,
+    private _CategoriesService:CategoriesService,
+  ) {}
   
   categoryName:string='';
   

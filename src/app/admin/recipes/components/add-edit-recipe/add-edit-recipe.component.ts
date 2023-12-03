@@ -3,7 +3,7 @@ import { FormControl, FormGroup} from '@angular/forms';
 import { HelperService } from 'src/app/services/helper.service';
 import { RecipeService } from '../../services/recipe.service';
 import { ICategory, ITag } from '../../models/recipe';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -16,6 +16,10 @@ export class AddEditRecipeComponent implements OnInit {
   imgSrc: any;
   tags: ITag[]= [];
   categories: ICategory[]= [];
+  recipeId:any;
+  isUpdate: boolean= false;
+  isView:boolean=false;
+  recipeData: any;
   recipeForm = new FormGroup({
     name: new FormControl(null),
     description: new FormControl(null),
@@ -23,16 +27,53 @@ export class AddEditRecipeComponent implements OnInit {
     tagId: new FormControl(null),
     categoriesIds: new FormControl(null)
   })
-  constructor(private _HelperService:HelperService, private _RecipeService:RecipeService, 
-    private Router:Router, private _ToastrService:ToastrService,private _ActivatedRoute:ActivatedRoute) {
-      _ActivatedRoute.snapshot.params['id'];
-     }
-
+  constructor(private _HelperService:HelperService,
+     private _RecipeService:RecipeService, 
+    private Router:Router,
+     private _ToastrService:ToastrService,
+     private _ActivatedRoute:ActivatedRoute
+     ) {
+        this.recipeId = _ActivatedRoute.snapshot.params['id'];
+        if(this.recipeId){
+          this.getRecpesById(this.recipeId);
+          this.isUpdate=true;
+        }
+        else{
+          this.isUpdate = false;
+        }
+      }
+  
   ngOnInit() {
     this.getAlltags();
     this.getAllCategories();
   }
 
+  viewRecipe(){
+    this.recipeForm.disable()
+  }
+
+  getRecpesById(id:number){
+    this._RecipeService.getRecipeByid(id).subscribe({
+      next:(res)=>{
+        this.recipeData = res;
+      },
+      error:(err)=>{
+      },
+      complete:()=>{          
+        this.imgSrc = 'https://upskilling-egypt.com/' + this.recipeData?.imagePath,
+        this.recipeForm.patchValue({
+          name:this.recipeData?.name,
+          price:this.recipeData?.price,
+          tagId:this.recipeData?.tag.id,
+          categoriesIds:this.recipeData?.category[0].id,
+          description:this.recipeData?.description,
+        }); 
+        
+      }
+    })
+  }
+
+  
   onSupmit(data:FormGroup){
     console.log(data.value);
     let myData = new FormData();
@@ -43,17 +84,32 @@ export class AddEditRecipeComponent implements OnInit {
     myData.append('categoriesIds', data.value.categoriesIds);
     myData.append('recipeImage', this.imgSrc, this.imgSrc.name);
 
-    this._RecipeService.addRecipe(myData).subscribe({
-      next:(res)=>{
-      },
-      error:(err)=>{
-      },
-      complete:()=>{
-        this._ToastrService.success('Recipe deleted', 'Success');
-        this.Router.navigate(['/dashboard/admin/recipes'])
-      }
-    })
+    if(this.recipeId){
+      this._RecipeService.editRecipe(this.recipeId,myData).subscribe({
+        next:(res)=>{
+        },
+        error:(err)=>{
+        },
+        complete:()=>{
+          this._ToastrService.success('Recipe updated', 'Success');
+          this.Router.navigate(['/dashboard/admin/recipes'])
+        }
+      })
+    }
+    else{
+      this._RecipeService.addRecipe(myData).subscribe({
+        next:(res)=>{
+        },
+        error:(err)=>{
+        },
+        complete:()=>{
+          this._ToastrService.success('Recipe deleted', 'Success');
+          this.Router.navigate(['/dashboard/admin/recipes'])
+        }
+      })
+    }
   }
+  
   getAlltags(){
     this._HelperService.getTags().subscribe({
       next:(res)=>{

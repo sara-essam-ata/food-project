@@ -7,6 +7,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DeleteComponent } from 'src/app/sheard/delete/delete.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -15,7 +16,10 @@ import { DeleteComponent } from 'src/app/sheard/delete/delete.component';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor(private _CategoriesService:CategoriesService, private dialog:MatDialog, private ToastrService:ToastrService) { }
+  constructor(private _CategoriesService:CategoriesService,
+     private dialog:MatDialog,
+     private ToastrService:ToastrService,
+     private Router:Router) { }
 
   tableResponse: ICategoryTable | undefined ;
   tableData: ICategory[] | undefined =[];
@@ -78,6 +82,7 @@ export class CategoriesComponent implements OnInit {
       if(result){
         console.log(result.id);
         this.onDeleteCategory(result.id);
+        this.Router.navigate(['/dashboard/admin/categories'])
       }
     });
   }  
