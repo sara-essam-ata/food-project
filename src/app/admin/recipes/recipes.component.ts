@@ -7,14 +7,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HelperService } from 'src/app/services/helper.service';
 import { Router } from '@angular/router';
-
+import { AddEditRecipeComponent } from './components/add-edit-recipe/add-edit-recipe.component';
+AddEditRecipeComponent
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent implements OnInit {
-  
   tableResponse: IRecipeTable | undefined;
   tableData: IRecipe[] = [];
   pageSize = 10;
@@ -22,9 +22,10 @@ export class RecipesComponent implements OnInit {
   tagId = 0;
   categoryId = 0;
   tags: ITag[] = [];
-  categories: ICategory[]=[];
+  categories: ICategory[] = [];
   searchValue = '';
   recipeData: any;
+  recipeForm: any;
 
   constructor(
     private _RecipeService: RecipeService,
@@ -36,7 +37,7 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAlltags();
-    this.getAllCategories();
+    this.getAllCategories();    
     this.getTableData();
   }
 
@@ -68,10 +69,9 @@ export class RecipesComponent implements OnInit {
 
   getAllCategories(){
     this._HelperService.getCategories().subscribe({
-      next:(res)=>{
+      next: (res)=>{
         this.categories = res.data;
         console.log(this.categories);
-        
       }
     })
   }
@@ -81,7 +81,7 @@ export class RecipesComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.getTableData();
   }
-
+ 
   // Delete
   openDeleteDialog(recipeData: any): void {
     const dialogRef = this.dialog.open(DeleteComponent, {
@@ -114,4 +114,5 @@ export class RecipesComponent implements OnInit {
     });
   }
 
+ 
 }

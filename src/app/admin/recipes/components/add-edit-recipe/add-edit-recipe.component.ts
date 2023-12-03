@@ -3,55 +3,85 @@ import { FormControl, FormGroup} from '@angular/forms';
 import { HelperService } from 'src/app/services/helper.service';
 import { RecipeService } from '../../services/recipe.service';
 import { ICategory, ITag } from '../../models/recipe';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+ 
 
 @Component({
   selector: 'app-add-edit-recipe',
   templateUrl: './add-edit-recipe.component.html',
-  styleUrls: ['./add-edit-recipe.component.scss']
+  styleUrls: ['./add-edit-recipe.component.scss'],
 })
 export class AddEditRecipeComponent implements OnInit {
+  isEditMode: boolean = false;
+  isAddMode: boolean = true;
+  isUpdate: boolean = false;
   imgSrc: any;
   tags: ITag[]= [];
   categories: ICategory[]= [];
   recipeId:any;
-  isUpdate: boolean= false;
-  isView:boolean=false;
   recipeData: any;
   recipeForm = new FormGroup({
     name: new FormControl(null),
     description: new FormControl(null),
     price: new FormControl(null),
     tagId: new FormControl(null),
-    categoriesIds: new FormControl(null)
+    categoriesIds: new FormControl(null),
+  
   })
+  form: any;
   constructor(private _HelperService:HelperService,
-     private _RecipeService:RecipeService, 
+    private _RecipeService:RecipeService, 
     private Router:Router,
-     private _ToastrService:ToastrService,
-     private _ActivatedRoute:ActivatedRoute
+    private _ToastrService:ToastrService,
+    _ActivatedRoute:ActivatedRoute,
+    private route: ActivatedRoute
      ) {
         this.recipeId = _ActivatedRoute.snapshot.params['id'];
         if(this.recipeId){
           this.getRecpesById(this.recipeId);
-          this.isUpdate=true;
+          this.isUpdate= true;
+          this.route.url.subscribe(url=>{
+            this.isEditMode=url.some(segment=> segment.path ==='edit')
+            this.disableFormControls();
+          })
+          this.route.url.subscribe(url=>{
+            this.isAddMode=url.some(segment=> segment.path ==='add')
+            this.enableFormControls();
+          });
         }
         else{
-          this.isUpdate = false;
+          this.isUpdate=false;
         }
       }
-  
+
   ngOnInit() {
     this.getAlltags();
     this.getAllCategories();
+  }  
+  
+  disableFormControls() {
+      if (!this.isEditMode) {
+        this.recipeForm.get('name')?.disable();
+        this.recipeForm.get('price')?.disable();
+        this.recipeForm.get('description')?.disable();
+        this.recipeForm.get('tagId')?.disable();
+        this.recipeForm.get('categoriesIds')?.disable();
+        this.recipeForm.get('recipeImage')?.disable();
+      }
+    }
+  enableFormControls() {
+    if (this.isAddMode) {
+      this.recipeForm.get('name')?.enable();
+      this.recipeForm.get('price')?.enable();
+      this.recipeForm.get('description')?.enable();
+      this.recipeForm.get('tagId')?.enable();
+      this.recipeForm.get('categoriesIds')?.enable();
+      this.recipeForm.get('recipeImage')?.enable();
+    }
   }
-
-  viewRecipe(){
-    this.recipeForm.disable()
-  }
-
+  
+      
   getRecpesById(id:number){
     this._RecipeService.getRecipeByid(id).subscribe({
       next:(res)=>{
@@ -73,7 +103,6 @@ export class AddEditRecipeComponent implements OnInit {
     })
   }
 
-  
   onSupmit(data:FormGroup){
     console.log(data.value);
     let myData = new FormData();
@@ -119,6 +148,7 @@ export class AddEditRecipeComponent implements OnInit {
       }
     })
 }
+
 getAllCategories(){
   this._HelperService.getCategories().subscribe({
     next:(res)=>{
@@ -128,8 +158,8 @@ getAllCategories(){
     }
   })
 }
-files: File[] = [];
 
+files: File[] = [];
 onSelect(event:any) {
   console.log(event);
   this.imgSrc= event.addedFiles[0];
