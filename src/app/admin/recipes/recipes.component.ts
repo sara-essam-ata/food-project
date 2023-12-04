@@ -108,11 +108,10 @@ export class RecipesComponent implements OnInit {
         this._ToastrService.error('Error');
       },
       complete: () => {
-        this._ToastrService.success('Recipe deleted', 'Success');
         this.getTableData();
+        this._ToastrService.success('Recipe deleted', 'Success');
       }
     });
   }
-
- 
+  
 }

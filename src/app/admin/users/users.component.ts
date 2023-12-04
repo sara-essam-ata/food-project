@@ -66,7 +66,8 @@ export class UsersComponent implements OnInit {
       if(result){
         console.log(result.id);
         this.onDeleteUser(result.id);
-        this.Router.navigate(['/dashboard/admin/users'])
+        this.Router.navigate(['/dashboard/admin/users']);
+        this.getTableData();
       }
     });
   }  

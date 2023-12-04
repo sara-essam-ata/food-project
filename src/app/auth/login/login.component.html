@@ -12,16 +12,24 @@
 
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
                         <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
+                            <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
                             <input formControlName="email" type="email" class="form-control" placeholder="Enter your email" >
+                        </div>
+                        <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched " class="alert alert-danger mb-3 py-0">
+                            <p *ngIf="loginForm.get('email')?.errors?.['required']" class="mb-0">Email is required</p>
+                            <p *ngIf="loginForm.get('email')?.errors?.['email']" class="mb-0">Email is invalid</p>
                         </div>
                         <div class="input-group mb-3 position-relative">
                             <span class="input-group-text"><i class="fa-solid fa-lock"></i> </span>
                             <input formControlName="password" [type]="hide?'password':'text'" class="form-control" placeholder="Password" >
                             <span (click)="hide=!hide" class="eye-icon"><i class="fa-solid fa-eye"></i></span>
                         </div>
+                        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched " class="alert alert-danger mb-3 py-0">
+                            <p *ngIf="loginForm.get('password')?.errors?.['required']" class="mb-0">Password is required</p>
+                            <p *ngIf="loginForm.get('password')?.errors?.['pattern']" class="mb-0">Password must have capital,small letters,sympols,length(8-16) and ends with number </p>
+                        </div>
                         <div class="d-flex justify-content-between mb-3">
-                            <a class="second-color text-decoration-none">Register Now?</a>
+                            <a routerLink="/register" class="second-color text-decoration-none">Register Now?</a>
                             <a (click)="openDialog()" class="main-color text-decoration-none">Forgot password?</a>
                         </div>
                         <button [disabled]="loginForm.invalid" class="btn primary w-100">Login</button>

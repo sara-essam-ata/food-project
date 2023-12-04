@@ -1,0 +1,130 @@
+<section class="register d-flex align-items-center ">
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-10 mx-auto">
+              <div class="card-auth">
+                <div class="d-flex justify-content-between px-5 head">
+                  <div>
+                      <img class="w-75 pb-3" src="../../../assets/images/logo.svg">
+                  </div>
+                  <div>
+                    <h2 class="h3">Regieter</h2>
+                    <p>Welcome Back! Please enter your details</p>
+                  </div>
+                </div>
+                  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+                    <div class="row">
+                      <div class="username col-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                            <input formControlName="userName" type="text" class="form-control" placeholder="userName" >
+                        </div>
+                        <div *ngIf="registerForm.get('userName')?.errors && registerForm.get('userName')?.touched "
+                         class="alert alert-danger mb-3 py-0">
+                          <p *ngIf="registerForm.get('userName')?.errors?.['required']"
+                           class="mb-0">userName is required</p>
+                      </div>
+                      </div>
+                      <div class="email col-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                            <input formControlName="email" type="email" class="form-control" placeholder="Email" >
+                        </div>
+                        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched "
+                         class="alert alert-danger mb-3 py-0">
+                          <p *ngIf="registerForm.get('email')?.errors?.['required']"
+                           class="mb-0">Email is required</p>
+                          <p *ngIf="registerForm.get('email')?.errors?.['email']"
+                           class="mb-0">Email is invalid</p>
+                      </div>
+                      </div>
+                      <div class="country col-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-earth-africa"></i></span>
+                            <input formControlName="country" type="text" class="form-control" placeholder="country" >
+                        </div>
+                        <div *ngIf="registerForm.get('country')?.errors && registerForm.get('country')?.touched "
+                         class="alert alert-danger mb-3 py-0">
+                          <p *ngIf="registerForm.get('country')?.errors?.['required']"
+                           class="mb-0">country is required</p>
+                      </div>
+                      </div>
+                      <div class="phoneNumber col-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                            <input formControlName="phoneNumber" type="text" class="form-control" placeholder="phoneNumber" >
+                        </div>
+                        <div *ngIf="registerForm.get('phoneNumber')?.errors && registerForm.get('phoneNumber')?.touched "
+                         class="alert alert-danger mb-3 py-0">
+                           <p *ngIf="registerForm.get('phoneNumber')?.errors?.['required']"
+                            class="mb-0">phoneNumber is required</p>
+                           <p *ngIf="registerForm.get('phoneNumber')?.errors?.['pattern']"
+                            class="mb-0">phoneNumber starts with 011/012/015/010 and length 11 number </p>
+                      </div>
+                      </div>
+                      <div class="password col-6">
+                        <div class="input-group mb-3 position-relative">
+                            <span class="input-group-text"><i class="fa-solid fa-lock"></i> </span>
+                            <input formControlName="password" [type]="hide?'password':'text'" class="form-control" placeholder="Password" >
+                            <span (click)="hide=!hide" class="eye-icon"><i class="fa-solid " [class]="hide?'fa-eye-slash':'fa-eye'"></i></span>
+                        </div>
+                        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched "
+                          class="alert alert-danger mb-3 py-0">
+                            <p *ngIf="registerForm.get('password')?.errors?.['required']"
+                            class="mb-0">Password is required</p>
+                            <p *ngIf="registerForm.get('password')?.errors?.['pattern']"
+                            class="mb-0">Password must have capital,small letters,sympols,number and pass length(8-16) </p>
+                      </div>
+                      </div>
+                      <div class="confirmPassword col-6">
+                        <div class="input-group mb-3 position-relative">
+                            <span class="input-group-text"><i class="fa-solid fa-lock"></i> </span>
+                            <input formControlName="confirmPassword" [type]="hideConfirm?'password':'text'" class="form-control" placeholder="confirm Password" >
+                            <span  (click)="hideConfirm=!hideConfirm" class="eye-icon"><i class="fa-solid" [class]="hideConfirm?'fa-eye-slash':'fa-eye'"></i></span>
+                        </div>
+                        <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched "
+                          class="alert alert-danger mb-3 py-0">
+                            <p *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
+                            class="mb-0">confirmPassword is required</p>
+                            <p *ngIf="registerForm.get('confirmPassword')?.errors?.['pattern']"
+                            class="mb-0">confirm Password must have capital,small letters,sympols,number and pass length(8-16) </p>
+                      </div>
+                      </div>
+                      <div class="profileImage col-11 mx-auto">
+                        <ngx-dropzone  class="mb-3" (change)="onSelect($event)" [multiple]="false">
+
+                          <ngx-dropzone-label *ngIf="!imgSrc">
+                              <i class="fa-solid fa-arrow-up-from-bracket d-block fs-3 "></i>
+                                Drag & Drop or <span class="main-color">Choose a Profile Image</span> to Upload
+                          </ngx-dropzone-label>
+              
+                          <ngx-dropzone-label *ngIf="imgSrc">
+                            <img [src]="imgSrc" class="w-25" alt="">
+                          </ngx-dropzone-label>
+              
+                          <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                               [removable]="true" (removed)="onRemove(f)">
+                          </ngx-dropzone-image-preview>
+              
+                        </ngx-dropzone>
+                      </div>
+                    </div>
+                      
+                      
+                      <div class="d-flex justify-content-between mb-3">
+                          <a routerLink="/auth/login" class="second-color text-decoration-none ms-5">Login Now?</a>
+                          <a (click)="openDialog()" class="main-color text-decoration-none">Have code?</a>
+                      </div>
+                      <button  class="btn primary w-100" [disabled]="registerForm.invalid">Register</button>
+                     
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+    
+</section>
+
+
+

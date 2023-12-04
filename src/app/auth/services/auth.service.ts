@@ -14,8 +14,14 @@ export class AuthService {
     }
   }
   role:string|null = '';
-  onLogin(data:ILogin){
+  onLogin(data: ILogin){
     return this._HttpClient.post('Users/Login', data)
+  }
+  onRegister(data: any){
+    return this._HttpClient.post('Users/Register', data)
+  }
+  onVerifyAccount(data: any){
+    return this._HttpClient.put('Users/verify', data)
   }
   getProfile(){
     let encoded:any = localStorage.getItem('userToken' );
