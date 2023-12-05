@@ -4,7 +4,8 @@
             <div class="col-3 ms-auto d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                     <div class="user-avater ">
-                        <img src="{{userImage}}" alt="">
+                        <img *ngIf="userImage" src="{{userImage}}" alt="">
+                        <img *ngIf="userImage==null" src="../../../assets/images/dummy-avatar-profile.jpg" alt="">
                     </div>
                     <span class="ms-1 user-name">{{userName}}</span>
                 </div>
