@@ -87,8 +87,8 @@
                   <span><i class="fa-regular fa-eye"></i></span>
                   <span class="p-2">View</span>
                 </a></li>
-                <li><a class="dropdown-item" [routerLink]="['/dashboard/user/favourites']">
-                  <span><i class="fa-regular fa-heart"></i></span>
+                <li><a class="dropdown-item" (click)="addToFav(item.id)">
+                  <span><i class="fa-solid fa-heart-circle-plus"></i></span>
                   <span class="p-2">favourite</span>
                 </a></li>
               </ul>
@@ -102,7 +102,7 @@
                 (page)="handlePageEvent($event)"
                 [length]="tableResponse?.totalNumberOfRecords"
                 [pageSize]="tableResponse?.pageSize"
-                [pageSizeOptions]="[5,10,25]"
+                [pageSizeOptions]="[5,10,25,50]"
                 [pageIndex]="tableResponse?.pageNumber"
                 aria-label="Select page">
       </mat-paginator>

@@ -1,9 +1,9 @@
 #navbar{
-    background-color: #F8F9FB ;
+    background-color: rgba(248, 249, 251, 1) ;
     padding: 1rem 0px;
     .user-avater{
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         background-color: #F4CE9B;
         img{
@@ -14,5 +14,13 @@
     span{
         color: #1F384C ;
     }
-
+}
+@media (max-width: 768px) {
+    .user-avater{
+        width: 200px;
+        height: 200px;
+    }
+    .user-name{
+        display: none;
+    }
 }

@@ -17,7 +17,7 @@ export class ResetPasswordComponent {
   email: new FormControl(this.userEmail,[Validators.required,Validators.email]),
   password: new FormControl(null,[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
   confirmPassword: new FormControl(null,[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
-  seed: new FormControl(null,[Validators.required]),
+  seed: new FormControl(null,[Validators.required, Validators.pattern('[a-zA-Z0-9]{4}')]),
 });
 
 hide:boolean=true;

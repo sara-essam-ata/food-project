@@ -99,17 +99,17 @@ export class CategoriesComponent implements OnInit {
       }
     })
   }
-
+  
   openEditCategory(categoryData:any){
     const dialogRef = this.dialog.open(AddEditCategoryComponent, {
-      data: categoryData,      
+      data: categoryData,  
       width: '30%'
     });
     console.log(categoryData.name);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
         this.onEditCategory(categoryData.id,result);
+
       }
     });
   }
@@ -122,7 +122,6 @@ export class CategoriesComponent implements OnInit {
         console.log(err.message);
       },
       complete:()=>{
-        console.log('fine');
         this.ToastrService.success('category updated','Success');
         this.getTableData();
       }

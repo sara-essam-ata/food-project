@@ -11,7 +11,7 @@ constructor(private _HttpClient:HttpClient) { }
         return this._HttpClient.get('tag')
     }
     getCategories():Observable<any>{
-        return this._HttpClient.get('Category', {params: {pageSize:100}})
+        return this._HttpClient.get('Category' , {params: {pageSize:100}})
       }
     
 }

@@ -132,7 +132,7 @@ export class AddEditRecipeComponent implements OnInit {
         error:(err)=>{
         },
         complete:()=>{
-          this._ToastrService.success('Recipe deleted', 'Success');
+          this._ToastrService.success('Recipe Added', 'Success');
           this.Router.navigate(['/dashboard/admin/recipes'])
         }
       })

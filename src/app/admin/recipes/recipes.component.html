@@ -17,7 +17,6 @@
 </section>
 
 <section>
-  
   <div class="container py-4">
     <div class="mb-3 d-flex justify-content-end">
       <button class="btn primary" routerLink="/dashboard/admin/recipes/add">Add New Recipe</button>
@@ -27,14 +26,14 @@
             <input class="form-control me-2"  type="text" [(ngModel)]="searchValue" (keyup)="getTableData()" placeholder="Search" >
           </div>
           <div class="col-2 d-flex align-items-center">
-            <span >Tag:</span>
+            <span class="tag-span">Tag:</span>
             <select [(ngModel)]="tagId"  (change)="getTableData()" class="form-select" aria-label="Default select example">
               <option selected>All Tags</option>
               <option *ngFor="let item of tags" [value]="item.id">{{item.name}}</option>
             </select>
           </div>
           <div class="col-3 d-flex align-items-center">
-            <span>Category:</span>
+            <span class="category-span">Category:</span>
             <select [(ngModel)]="categoryId" (change)="getTableData()" class="form-select" aria-label="Default select example">
               <option selected >All Category</option>
               <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
@@ -51,9 +50,9 @@
           <th>Name</th>
           <th>Image</th>
           <th>Price</th>
-          <th>Description</th>
-          <th>Tag</th>
-          <th>Category</th>
+          <th class="desc">Description</th>
+          <th class="tag">Tag</th>
+          <th class="cteg">Category</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -103,7 +102,7 @@
         </tr>
       </tbody>
     </table>
-    <mat-paginator #paginator
+    <mat-paginator *ngIf="tableData.length>0" #paginator
                 class="demo-paginator"
                 (page)="handlePageEvent($event)"
                 [length]="tableResponse?.totalNumberOfRecords"
@@ -112,6 +111,12 @@
                 [pageIndex]="tableResponse?.pageNumber"
                 aria-label="Select page">
       </mat-paginator>
+      <div *ngIf="tableData.length==0" class="d-flex justify-content-center align-items-center">
+        <div  class="w-50 vh-50 text-center">
+          <img src="../../../assets/images/delete-img.svg" class="w-50" alt="">
+          <h3>No Data!</h3>
+        </div>
+      </div>
 </div>
 </section>
 

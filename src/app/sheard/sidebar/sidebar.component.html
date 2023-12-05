@@ -1,25 +1,25 @@
 <div class="container">
     <div class="row">
         <div class="sidebar bg-third vh-100" [ngClass]="{'col-6': !isOpened}">
-                <div class="text-center mt-3" (click)="isOpened=!isOpened">
-                    <img class="w-75" [ngClass]="{'w-100': !isOpened}" src="../../assets/images/side-icon.png" alt="">
+                <div class="text-center " (click)="isOpened=!isOpened">
+                    <img class="w-75" [ngClass]="{'w-100': !isOpened}" src="../../../assets/images/sideIcon.svg" alt="">
                 </div>
                 <ng-container *ngFor="let item of menu">
                     <a class="d-block text-decoration-none" [routerLink]="item.link" routerLinkActive="bg-active" 
                     *ngIf="item.isActive">
                         <div class="item">
                             <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i [class]="item.icon"></i></span>
-                            <span [ngClass]="{'d-none': !isOpened}">{{item.title}}</span>
+                            <span class="icon-name" [ngClass]="{'d-none': !isOpened}">{{item.title}}</span>
                         </div>
                     </a>
                 </ng-container>
                     <div (click)="openDialog()" class="item text-nowrap">
                         <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-lock"></i></span>
-                        <span [ngClass]="{'d-none': !isOpened}" class="">Change Password</span>
+                        <span class="icon-name" [ngClass]="{'d-none': !isOpened}" class="">Change Password</span>
                     </div>
                     <div (click)="openLogoutDialog()" class="item">
                         <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-right-from-bracket"></i></span>
-                        <span [ngClass]="{'d-none': !isOpened}" class="">Logout</span>
+                        <span class="icon-name" [ngClass]="{'d-none': !isOpened}" class="">Logout</span>
                     </div>
         </div>
     </div>

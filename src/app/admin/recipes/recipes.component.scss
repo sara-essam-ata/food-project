@@ -26,3 +26,8 @@ table{
     color: #fff;
   }
 }
+@media (max-width: 768px) { 
+  .tag-span,.category-span{
+      display: none;
+  };
+}

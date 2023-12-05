@@ -1,3 +1,35 @@
-<p>
-  favourites works!
-</p>
+<section class="page-header ">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-9 ">
+        <div>
+          <h3>Favourite <span class="fw-light h3">items</span></h3>
+          <p>You can now add your items that any user can order it from the Application and you can edit</p>
+        </div>
+      </div>
+      <div class="col-3 ">
+        <div class="text-end">
+          <img src="../../../assets/images/catIcon.png" class="w-75" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <div class="container">
+    <div class="row py-5 gy-3" *ngIf="myFav" >
+      <div class="col-md-4 " *ngFor="let item of myFav">
+        <div class="item rounded shadow">
+          <div>
+            <img class="rounded-bottom w-100" [src]="'https://upskilling-egypt.com/'+item.recipe.imagePath" >
+          </div>
+          <div class="p-3">
+            <h4>{{item.recipe.name}}</h4>
+            <p>{{item.recipe.description}}</p>
+          </div>
+          <a (click)="removeFav(item.id)" class="delete-icon text-decoration-none d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-heart-circle-xmark"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

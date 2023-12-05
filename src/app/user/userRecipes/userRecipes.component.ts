@@ -6,8 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { IRecipeTable, IRecipe, ITag, ICategory } from 'src/app/admin/recipes/models/recipe';
 import { RecipeService } from 'src/app/admin/recipes/services/recipe.service';
 import { HelperService } from 'src/app/services/helper.service';
-import { DeleteComponent } from 'src/app/sheard/delete/delete.component';
 import { RecipeDataComponent } from './recipe-data/recipe-data.component';
+import { FavouriteService } from '../favourites/services/favourite.service';
 
 @Component({
   selector: 'app-userRecipes',
@@ -31,9 +31,10 @@ export class UserRecipesComponent implements OnInit {
   constructor(
     private _RecipeService: RecipeService,
     private _HelperService: HelperService,
-    private _ToastrService: ToastrService,
     private Router:Router,
-    public dialog: MatDialog
+    private _ToastrService:ToastrService,
+    public dialog: MatDialog,
+    private _FavouriteService:FavouriteService
   ) {}
 
   ngOnInit(): void {
@@ -80,14 +81,34 @@ export class UserRecipesComponent implements OnInit {
 
 
   openDialog(recipeItem:IRecipe) {
-    this.dialog.open(RecipeDataComponent, {
+    const dialogRef = this.dialog.open(RecipeDataComponent, {
       data: recipeItem,
       width: '40%'
-      
       },
-
     );
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        console.log(result);
+        this.addToFav(result);
+      }
+    });
   }
+
+  addToFav(id:number){
+    this._FavouriteService.onAddToFav(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+      },
+      error:(err)=>{
+        this._ToastrService.error('failed to add favourite', 'Error!');
+      },
+      complete:()=>{
+        this._ToastrService.success('recipe added to favourites', 'success');
+        this.Router.navigate(['/dashboard/user/favourites'])
+      }
+    })
+  }
+
   handlePageEvent(e: PageEvent) {
     this.pageNumber = e.pageIndex + 1;
     this.pageSize = e.pageSize;

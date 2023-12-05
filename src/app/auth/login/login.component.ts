@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    constructor(private _AuthService:AuthService, private toastr:ToastrService,public dialog: MatDialog,
-    private router:Router){}
+    constructor(private _AuthService:AuthService,
+      private toastr:ToastrService,
+      public dialog: MatDialog,
+      private router:Router){}
       hide:boolean=true;
   message='';
   loginForm = new FormGroup({

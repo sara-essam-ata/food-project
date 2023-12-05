@@ -18,4 +18,7 @@ constructor(private _HttpClient:HttpClient) { }
     editCategory(id:number,data:string){
       return this._HttpClient.put(`Category/${id}`, {name:data})
     }
+    getCategoryById(id:number){
+      return this._HttpClient.get(`Category/${id}`)
+    }
 }

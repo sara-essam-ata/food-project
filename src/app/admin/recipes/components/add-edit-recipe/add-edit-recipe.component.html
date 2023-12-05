@@ -1,3 +1,20 @@
+<section class="page-header ">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-9 ">
+        <div class="third-color">
+          <h3>Fill the<span class="main-color h3"> Recipes </span>!</h3>
+          <p>you can now fill the meals easily using the table and form , click here and sill it with the table !</p> 
+        </div>
+      </div>
+      <div class="col-3 ">
+        <div class="text-end">
+          <img src="../../../assets/images/catIcon.png" class="w-75" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="container">
   <form [formGroup]="recipeForm" (ngSubmit)="onSupmit(recipeForm)" >
     <div class="row card-auth shadow-sm">
@@ -36,20 +53,16 @@
         </div>
         <div>
           <ngx-dropzone [disabled]="!isEditMode&&!isAddMode" class="mb-3" (change)="onSelect($event)" [multiple]="false">
-
             <ngx-dropzone-label *ngIf="!imgSrc">
                 <i class="fa-solid fa-arrow-up-from-bracket d-block fs-2 pb-3"></i>
                   Drag & Drop or <span class="main-color">Choose a Item Image</span> to Upload
             </ngx-dropzone-label>
-
             <ngx-dropzone-label *ngIf="imgSrc">
-              <img [src]="imgSrc" class="w-25" alt="">
+              <img [src]="imgSrc" class="w-50" alt="">
             </ngx-dropzone-label>
-
             <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
                  [removable]="true" (removed)="onRemove(f)">
             </ngx-dropzone-image-preview>
-
           </ngx-dropzone>
         </div>
         <button type="button" routerLink="/dashboard/admin/recipes" class="btn outline-primary">Cancle</button>

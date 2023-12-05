@@ -1,5 +1,4 @@
 <section class="register d-flex align-items-center ">
-
   <div class="container">
       <div class="row">
           <div class="col-md-10 mx-auto">
@@ -32,11 +31,11 @@
                             <input formControlName="email" type="email" class="form-control" placeholder="Email" >
                         </div>
                         <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched "
-                         class="alert alert-danger mb-3 py-0">
-                          <p *ngIf="registerForm.get('email')?.errors?.['required']"
-                           class="mb-0">Email is required</p>
-                          <p *ngIf="registerForm.get('email')?.errors?.['email']"
-                           class="mb-0">Email is invalid</p>
+                             class="alert alert-danger mb-3 py-0">
+                            <p *ngIf="registerForm.get('email')?.errors?.['required']"
+                             class="mb-0">Email is required</p>
+                            <p *ngIf="registerForm.get('email')?.errors?.['email']"
+                             class="mb-0">Email is invalid</p>
                       </div>
                       </div>
                       <div class="country col-6">
@@ -84,46 +83,39 @@
                             <span  (click)="hideConfirm=!hideConfirm" class="eye-icon"><i class="fa-solid" [class]="hideConfirm?'fa-eye-slash':'fa-eye'"></i></span>
                         </div>
                         <div *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched "
-                          class="alert alert-danger mb-3 py-0">
-                            <p *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
-                            class="mb-0">confirmPassword is required</p>
-                            <p *ngIf="registerForm.get('confirmPassword')?.errors?.['pattern']"
-                            class="mb-0">confirm Password must have capital,small letters,sympols,number and pass length(8-16) </p>
-                      </div>
+                            class="alert alert-danger mb-3 py-0">
+                              <p *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
+                              class="mb-0">confirmPassword is required</p>
+                              <p *ngIf="registerForm.get('confirmPassword')?.errors?.['pattern']"
+                              class="mb-0">confirm Password must have capital,small letters,sympols,number and pass length(8-16) </p>
+                        </div>
                       </div>
                       <div class="profileImage col-11 mx-auto">
                         <ngx-dropzone  class="mb-3" (change)="onSelect($event)" [multiple]="false">
-
                           <ngx-dropzone-label *ngIf="!imgSrc">
                               <i class="fa-solid fa-arrow-up-from-bracket d-block fs-3 "></i>
                                 Drag & Drop or <span class="main-color">Choose a Profile Image</span> to Upload
                           </ngx-dropzone-label>
-              
                           <ngx-dropzone-label *ngIf="imgSrc">
                             <img [src]="imgSrc" class="w-25" alt="">
                           </ngx-dropzone-label>
-              
                           <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
                                [removable]="true" (removed)="onRemove(f)">
                           </ngx-dropzone-image-preview>
-              
                         </ngx-dropzone>
                       </div>
                     </div>
-                      
-                      
+                        
                       <div class="d-flex justify-content-between mb-3">
                           <a routerLink="/auth/login" class="second-color text-decoration-none ms-5">Login Now?</a>
                           <a (click)="openDialog()" class="main-color text-decoration-none">Have code?</a>
                       </div>
-                      <button  class="btn primary w-100" [disabled]="registerForm.invalid">Register</button>
-                     
+                      <button  class="btn primary w-100" [disabled]="registerForm.invalid">Register</button>            
                   </form>
               </div>
           </div>
       </div>
   </div>
-    
 </section>
 
 
