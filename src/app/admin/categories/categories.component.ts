@@ -102,7 +102,7 @@ export class CategoriesComponent implements OnInit {
   
   openEditCategory(categoryData:any){
     const dialogRef = this.dialog.open(AddEditCategoryComponent, {
-      data: categoryData,  
+      data: {categoryName:categoryData.name},  
       width: '30%'
     });
     console.log(categoryData.name);

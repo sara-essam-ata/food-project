@@ -16,11 +16,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { LogoutComponent } from './logout/logout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent,SidebarComponent, HomeComponent,DeleteComponent,LogoutComponent,NotFoundComponent ],
+    NavbarComponent,SidebarComponent, HomeComponent,DeleteComponent,LogoutComponent,NotFoundComponent,ProfileComponent ],
   imports: [
     CommonModule,
     MatButtonModule, MatDividerModule, MatIconModule,HttpClientModule,ReactiveFormsModule,
@@ -36,6 +37,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
   exports:[
     MatButtonModule, MatDividerModule, MatIconModule,HttpClientModule,ReactiveFormsModule,FormsModule
      ,MatDialogModule,NavbarComponent,SidebarComponent,HomeComponent,MatPaginatorModule, DeleteComponent,
-     NgxDropzoneModule,LogoutComponent,NotFoundComponent]
+     NgxDropzoneModule,LogoutComponent,NotFoundComponent,ProfileComponent]
 })
 export class SheardModule {}

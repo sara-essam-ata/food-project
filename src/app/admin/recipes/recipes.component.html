@@ -26,16 +26,14 @@
             <input class="form-control me-2"  type="text" [(ngModel)]="searchValue" (keyup)="getTableData()" placeholder="Search" >
           </div>
           <div class="col-2 d-flex align-items-center">
-            <span class="tag-span">Tag:</span>
             <select [(ngModel)]="tagId"  (change)="getTableData()" class="form-select" aria-label="Default select example">
-              <option selected>All Tags</option>
+              <option selected value="0">Tags</option>
               <option *ngFor="let item of tags" [value]="item.id">{{item.name}}</option>
             </select>
           </div>
           <div class="col-3 d-flex align-items-center">
-            <span class="category-span">Category:</span>
             <select [(ngModel)]="categoryId" (change)="getTableData()" class="form-select" aria-label="Default select example">
-              <option selected >All Category</option>
+              <option selected value="0">Categories</option>
               <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
             </select>
           </div>

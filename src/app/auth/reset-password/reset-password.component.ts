@@ -32,7 +32,7 @@ constructor(private _AuthService:AuthService, private toastr:ToastrService,
         console.log(res)
       },
       error:(err:any)=>{
-        this.toastr.error('check your email and password' , 'error!');
+        this.toastr.error('check your email and password or internet connection' , 'error!');
         console.log(err.message);
       },
       complete:()=> {
