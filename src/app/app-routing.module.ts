@@ -3,9 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { authGuard } from './guards/auth.guard';
 import { NotFoundComponent } from './sheard/not-found/not-found.component';
-import { ProfileComponent } from './sheard/profile/profile.component';
-import { NavbarComponent } from './sheard/navbar/navbar.component';
-
 
 const routes: Routes = [
   {path:'', redirectTo:'auth' , pathMatch:'full'},

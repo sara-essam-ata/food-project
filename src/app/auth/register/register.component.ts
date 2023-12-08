@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   }
   
   registerForm = new FormGroup({
-    userName: new FormControl(null, [Validators.required]),
+    userName: new FormControl(null, [Validators.required, Validators.pattern('([a-zA-Z]){3,12}([0-9]{1,3})')]),
     email: new FormControl(null, [Validators.required]),
     country: new FormControl(null, [Validators.required]),
     profileImage: new FormControl(null),

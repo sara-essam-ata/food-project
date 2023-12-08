@@ -1,81 +1,115 @@
-<section class="page-header ">
+<section class="page-header">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-9 ">
+      <div class="col-9">
         <div>
           <h3>Users <span class="fw-light h3">List</span></h3>
-          <p>You can now add your items that any user can order it from the Application and you can edit</p>
+          <p>
+            You can now add your items that any user can order it from the
+            Application and you can edit
+          </p>
         </div>
       </div>
-      <div class="col-3 ">
+      <div class="col-3">
         <div class="text-end">
-          <img src="../../../assets/images/catIcon.png" class="w-75" alt="">
+          <img src="../../../assets/images/catIcon.png" class="w-75" alt="" />
         </div>
       </div>
     </div>
   </div>
 </section>
 <section>
-  <div class="container py-4">
-        <div class="row justify-content-between">
-          <div class="col-8">
-            <input class="form-control me-2"  type="text" [(ngModel)]="searchValue" (keyup)="getTableData()" placeholder="Search" >
-          </div>
-          <div class="col-3">
-            <select [(ngModel)]="groupId"  (change)="getTableData()" class="form-select" aria-label="Default select example"> -->
-              <option value="0">All</option>
-              <option [value]="1">Super Admin</option>
-              <option [value]="2">System User</option>
-           </select> 
-          </div>
-        </div>
+  <div class="container-fluid py-4">
+    <div class="row justify-content-between">
+      <div class="col-8">
+        <input
+          class="form-control me-2"
+          type="text"
+          [(ngModel)]="searchValue"
+          (keyup)="getTableData()"
+          placeholder="Search"
+        />
+      </div>
+      <div class="col-3">
+        <select
+          [(ngModel)]="groupId"
+          (change)="getTableData()"
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option value="0">All</option>
+          <option [value]="1">Super Admin</option>
+          <option [value]="2">System User</option>
+        </select>
+      </div>
+    </div>
   </div>
 
-<div>
-  <table class="table table-striped">
-      <thead >
-        <tr >
+  <div>
+    <table class="table">
+      <thead class="table-active">
+        <tr>
           <th>Name</th>
-          <th>Image</th>
+          <th class="text-center">Image</th>
           <th>Email</th>
           <th>Phone</th>
           <th>Country</th>
           <th>Role</th>
           <th>Join Date</th>
-          <th>Actions</th>          
+          <th>Actions</th>
         </tr>
       </thead>
-      <tbody *ngIf="tableData.length>0">
-        <tr *ngFor="let item of tableData" >
-          <td>{{item.userName}}</td>
-          <td class="w-25">
+      <tbody *ngIf="tableData.length > 0">
+        <tr *ngFor="let item of tableData">
+          <td>{{ item.userName }}</td>
+          <td class="w-25 text-center">
             <ng-container *ngIf="item.imagePath">
-              <img [src]="'https://upskilling-egypt.com/'+item.imagePath" class="w-50 vh-50" alt="">
+              <img
+                [src]="'https://upskilling-egypt.com/' + item.imagePath"
+                class="w-50 vh-50"
+                alt=""
+              />
             </ng-container>
             <ng-container *ngIf="!item.imagePath">
-              <span class="text-center bg-secondary-subtle p-2">No Image</span>
+              <img
+                src="../../../assets/images/dummy-avatar-profile.jpg"
+                class="w-25 vh-25"
+                alt=""
+              />
             </ng-container>
-          </td>        
-          <td>{{item.email}}</td>
-          <td>{{item.phoneNumber}}</td>
-          <td>{{item.country}}</td>
-          <td>{{item.group.name}}</td>
-          <td>{{item.creationDate|date:'dd/mm/yyyy'}}</td>
+          </td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.phoneNumber }}</td>
+          <td>{{ item.country }}</td>
+          <td>{{ item.group.name }}</td>
+          <td>{{ item.creationDate | date : "dd/mm/yyyy" }}</td>
           <td class="text-center">
-            <a (click)="openDeleteDialog(item)" class=" text-danger"><i class="fa-regular fa-trash-can"></i></a>
+            <a (click)="openDeleteDialog(item)" class="text-danger"
+              ><i class="fa-regular fa-trash-can"></i
+            ></a>
           </td>
         </tr>
       </tbody>
     </table>
-    <mat-paginator #paginator
-                class="demo-paginator"
-                (page)="handlePageEvent($event)"
-                [length]="tableResponse?.totalNumberOfRecords"
-                [pageSize]="tableResponse?.pageSize"
-                [pageSizeOptions]="[5,10,25,50]"
-                [pageIndex]="tableResponse?.pageNumber"
-                aria-label="Select page">
-      </mat-paginator>
-</div>
+    <mat-paginator
+      #paginator
+      class="demo-paginator"
+      (page)="handlePageEvent($event)"
+      [length]="tableResponse?.totalNumberOfRecords"
+      [pageSize]="tableResponse?.pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50]"
+      [pageIndex]="tableResponse?.pageNumber"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+    <div
+      *ngIf="tableData.length == 0"
+      class="d-flex justify-content-center align-items-center"
+    >
+      <div class="w-50 vh-50 text-center">
+        <img src="../../../assets/images/delete-img.svg" class="w-50" alt="" />
+        <h3>No Data!</h3>
+      </div>
+    </div>
+  </div>
 </section>
-

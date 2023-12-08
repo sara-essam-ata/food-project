@@ -7,13 +7,21 @@
         border-radius: 50%;
         background-color: #F4CE9B;
         img{
-            width: 100%;
+            width: 100% !important;
             border-radius: 50%;
         }
     }
     span{
         color: #1F384C ;
     }
+}
+.dropdown{
+  .btn{
+    background-color: rgba(248, 249, 251, 1) !important;
+    border: none;
+    color: #1E232C;
+  }
+  background-color: rgba(248, 249, 251, 1) !important;
 }
 @media (max-width: 768px) {
     .user-avater{

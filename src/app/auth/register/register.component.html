@@ -23,6 +23,8 @@
                          class="alert alert-danger mb-3 py-0">
                           <p *ngIf="registerForm.get('userName')?.errors?.['required']"
                            class="mb-0">userName is required</p>
+                           <p *ngIf="registerForm.get('userName')?.errors?.['pattern']"
+                           class="mb-0">userName contains letters 3-12 and numbers 1-3</p>
                       </div>
                       </div>
                       <div class="email col-6">

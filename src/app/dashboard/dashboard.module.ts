@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { adminGuard } from '../guards/admin.guard';
 import { userGuard } from '../guards/user.guard';
 import { HomeComponent } from '../sheard/home/home.component';
-import { ProfileComponent } from '../sheard/profile/profile.component';
 
 const routes: Routes = [
   {path:'', component:DashboardComponent, children:[
@@ -14,7 +13,8 @@ const routes: Routes = [
       {path: 'home', component:HomeComponent},
       {path: 'admin', canActivate:[adminGuard], loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule)},
       {path: 'user', canActivate:[userGuard], loadChildren: () => import('../user/user.module').then(m => m.UserModule)},
-      {path: 'profile', component:ProfileComponent},
+      {path: 'profile', loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)},
+
     ]
   },
 ];
