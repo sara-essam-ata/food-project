@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRecipesComponent } from './userRecipes.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SheardModule } from 'src/app/sheard/sheard.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {path:'', component:UserRecipesComponent},
@@ -13,7 +13,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SheardModule,
+    SharedModule,
   ],
   declarations: [UserRecipesComponent]
 })

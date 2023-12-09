@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { GlobalInterceptor } from './auth/interceptors/global.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { SheardModule } from './sheard/sheard.module';
+import { SharedModule } from './shared/shared.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoadingInterceptor } from './auth/interceptors/loading.interceptor';
@@ -26,7 +26,7 @@ import { LoadingInterceptor } from './auth/interceptors/loading.interceptor';
       closeButton:true
     }),
     DashboardModule,
-    SheardModule,
+    SharedModule,
     NgxSpinnerModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
 

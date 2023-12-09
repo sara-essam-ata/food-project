@@ -17,3 +17,7 @@
     <button mat-raised-button color="accent">SHARE</button>
   </mat-card-actions>
 </mat-card> -->
+<mat-button-toggle-group name="theme" aria-label="Theme Selection" [value]="theme">
+  <mat-button-toggle value="light" (click)="selectLightTheme()">Light</mat-button-toggle>
+  <mat-button-toggle value="dark" (click)="selectDarkTheme()">Dark</mat-button-toggle>
+</mat-button-toggle-group>

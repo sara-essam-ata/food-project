@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ICategory, IRecipe, IRecipeTable, ITag } from './models/recipe';
 import { RecipeService } from './services/recipe.service';
 import { PageEvent } from '@angular/material/paginator';
-import { DeleteComponent } from 'src/app/sheard/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/delete/delete.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { HelperService } from 'src/app/services/helper.service';

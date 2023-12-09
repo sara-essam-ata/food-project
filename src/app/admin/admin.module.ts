@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SheardModule } from '../sheard/sheard.module';
-import { HomeComponent } from '../sheard/home/home.component';
+import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from '../shared/home/home.component';
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},
@@ -15,7 +15,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SheardModule,
+    SharedModule,
 
   ],
   declarations: [AdminComponent]

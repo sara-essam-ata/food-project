@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { Routes, RouterModule } from '@angular/router';
-import { SheardModule } from '../sheard/sheard.module';
+import { SharedModule } from '../shared/shared.module';
 import { RequestResetPasswordComponent } from './request-reset-password/request-reset-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { RegisterComponent } from './register/register.component';
@@ -30,7 +30,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SheardModule,
+    SharedModule,
   ],
   exports: []
 })

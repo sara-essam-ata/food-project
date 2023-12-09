@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from './categories.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SheardModule } from 'src/app/sheard/sheard.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { CategoriesService } from './services/categories.service';
 import { AddEditCategoryComponent } from './components/add-edit-category/add-edit-category.component';
 
@@ -14,7 +14,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SheardModule,
+    SharedModule,
   ],
   providers: [
     CategoriesService

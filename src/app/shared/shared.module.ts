@@ -17,7 +17,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { LogoutComponent } from './logout/logout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DarkComponent } from './dark/dark.component';
-
+import {MatCardModule} from '@angular/material/card'; 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -32,10 +33,13 @@ import { DarkComponent } from './dark/dark.component';
     RouterLink,
     RouterLinkActive,
     NgxDropzoneModule,
+    MatCardModule,
+    MatButtonModule,
+    MatButtonModule, MatButtonToggleModule
   ],
   exports:[
     MatButtonModule, MatDividerModule, MatIconModule,HttpClientModule,ReactiveFormsModule,FormsModule
      ,MatDialogModule,NavbarComponent,SidebarComponent,HomeComponent,MatPaginatorModule, DeleteComponent,
      NgxDropzoneModule,LogoutComponent,NotFoundComponent,DarkComponent]
 })
-export class SheardModule {}
+export class SharedModule {}

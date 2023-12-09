@@ -143,3 +143,22 @@ $dark-app-theme:   mat-dark-theme((
 .dark-theme {
   @include angular-material-color($dark-app-theme);
 }
+// @import '~@angular/material/theming';
+
+
+@mixin body-theme($theme) {
+  $_background: map-get($theme, background);
+  $app-background-color: mat-color($_background, background);
+
+  body {
+    background-color: $app-background-color;
+  }
+}
+
+@include angular-material-theme($light-app-theme);
+@include body-theme($light-app-theme);
+
+.dark-theme {
+  @include angular-material-color($dark-app-theme);
+  @include body-theme($dark-app-theme);
+}

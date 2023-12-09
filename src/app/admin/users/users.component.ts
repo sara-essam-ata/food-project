@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersAdminService } from './services/users-admin.service';
 import { IUser, IUserTable } from './models/users-admin';
 import { PageEvent } from '@angular/material/paginator';
-import { DeleteComponent } from 'src/app/sheard/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/delete/delete.component';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';

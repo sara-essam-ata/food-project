@@ -6,7 +6,7 @@ import { AddEditCategoryComponent } from './components/add-edit-category/add-edi
 import { Dialog } from '@angular/cdk/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { DeleteComponent } from 'src/app/sheard/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/delete/delete.component';
 import { Router } from '@angular/router';
 
 @Component({

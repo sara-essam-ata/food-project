@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
-import { SheardModule } from '../sheard/sheard.module';
+import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { adminGuard } from '../guards/admin.guard';
 import { userGuard } from '../guards/user.guard';
-import { HomeComponent } from '../sheard/home/home.component';
+import { HomeComponent } from '../shared/home/home.component';
 
 const routes: Routes = [
   {path:'', component:DashboardComponent, children:[
@@ -23,7 +23,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SheardModule,
+    SharedModule,
     
   ],
   declarations: [DashboardComponent]
