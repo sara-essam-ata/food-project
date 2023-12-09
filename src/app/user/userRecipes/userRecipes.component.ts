@@ -104,7 +104,21 @@ export class UserRecipesComponent implements OnInit {
       },
       complete:()=>{
         this._ToastrService.success('recipe added to favourites', 'success');
-        this.Router.navigate(['/dashboard/user/favourites'])
+        this.Router.navigate(['/dashboard/user/favourites']);      
+        this.getAllFav();
+
+      }
+    })
+  }
+  myFav: any;
+  getAllFav(){
+    this._FavouriteService.onGetAllFav().subscribe({
+      next:(res: any)=>{
+        console.log(res);
+        this.myFav = res.data;
+      },
+      error:(err)=>{},
+      complete:()=>{
       }
     })
   }

@@ -43,6 +43,7 @@ export class EditProfileComponent implements OnInit {
     for (const [key, value] of myMap) {
       myData.append(key, data.value[key]);
     }
+    myData.append('profileImage', this.imgSrc, this.imgSrc['name']);
     this._ProfileService.editProfile(myData).subscribe({
       next: (res: any) => {
         console.log(res);

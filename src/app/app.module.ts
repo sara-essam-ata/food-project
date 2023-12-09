@@ -14,9 +14,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { LoadingInterceptor } from './auth/interceptors/loading.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [	
+    AppComponent,
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

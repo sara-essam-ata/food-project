@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
     this.getCurrentUser()
     
   }
-  
 
   getCurrentUser(){
     this._ProfileService.getCurrentUser().subscribe({

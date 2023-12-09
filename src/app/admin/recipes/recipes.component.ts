@@ -42,13 +42,13 @@ export class RecipesComponent implements OnInit {
   }
 
   getTableData() {
-    const params = {
+    const prams = {
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
       name: this.searchValue,
       tagId: this.tagId,
     };
-    this._RecipeService.getRecipes(params).subscribe({
+    this._RecipeService.getRecipes(prams).subscribe({
       next: (res: IRecipeTable) => {
         this.tableResponse = res;
         this.tableData = this.tableResponse?.data || [];

@@ -6,11 +6,18 @@
       >
         <div class="d-flex align-items-center">
           <a routerLink="/dashboard/profile" class="user-avater">
-            <img src="../../../assets/images/profile.png" />
+            <img class="" [src]="'https://upskilling-egypt.com/'+currentUser?.imagePath" />
+            <img
+            *ngIf="!currentUser?.imagePath"
+            src="../../../assets/images/dummy-avatar-profile.jpg"
+            />
           </a>
-          <span class="ms-2 user-name">{{ userName }}</span>
-        </div>
-        <div class="dropdown">
+          <span class="ms-2">
+            <span class="user-name h5">{{currentUser.userName}}</span>
+            <span class="text-muted d-block">{{currentUser.group.name}}</span>
+          </span>
+          
+          <div class="dropdown ms-2">
           <a
             class="btn btn-secondary dropdown-toggle"
             role="button"
@@ -23,6 +30,8 @@
             <li><a class="dropdown-item" routerLink="/dashboard/profile/edit">Edit Profile</a></li>
           </ul>
         </div>
+        </div>
+        
         <span class="mx-3 fs-4 fw-bold"><i class="fa-solid fa-bell"></i></span>
       </div>
     </div>

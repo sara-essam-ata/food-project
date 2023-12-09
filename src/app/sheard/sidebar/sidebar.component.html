@@ -1,23 +1,23 @@
-<div class="container">
+<div class="container-fluid ">
     <div class="row">
         <div class="sidebar bg-third vh-100" [ngClass]="{'col-6': !isOpened}">
-                <div class="text-center " (click)="isOpened=!isOpened">
-                    <img class="w-75" [ngClass]="{'w-100': !isOpened}" src="../../../assets/images/sideIcon.svg" alt="">
+                <div class="text-center ">
+                    <img class="w-50" (click)="isOpened=!isOpened" [ngClass]="{'w-100': !isOpened}" src="../../../assets/images/sideIcon.svg" alt="">
                 </div>
                 <ng-container *ngFor="let item of menu">
                     <a class="d-block text-decoration-none" [routerLink]="item.link" routerLinkActive="bg-active" 
                     *ngIf="item.isActive">
-                        <div class="item">
+                        <div class="item py-2">
                             <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i [class]="item.icon"></i></span>
                             <span class="icon-name" [ngClass]="{'d-none': !isOpened}">{{item.title}}</span>
                         </div>
                     </a>
                 </ng-container>
-                    <div (click)="openDialog()" class="item text-nowrap">
+                    <div (click)="openDialog()" class="item py-2 text-nowrap">
                         <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-lock"></i></span>
                         <span class="icon-name" [ngClass]="{'d-none': !isOpened}" class="">Change Password</span>
                     </div>
-                    <div (click)="openLogoutDialog()" class="item">
+                    <div (click)="openLogoutDialog()" class="item py-2">
                         <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-right-from-bracket"></i></span>
                         <span class="icon-name" [ngClass]="{'d-none': !isOpened}" class="">Logout</span>
                     </div>
