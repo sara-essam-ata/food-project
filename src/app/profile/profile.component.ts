@@ -23,7 +23,10 @@ export class ProfileComponent implements OnInit {
       next:(res)=>{
         this.currentUser = res
         console.log(this.currentUser);
-      }
+      },error:(err)=>{
+        console.log(err);
+      },
+      complete:()=>{}
     })
   }
 

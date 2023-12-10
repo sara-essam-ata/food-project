@@ -62,18 +62,12 @@ export class SidebarComponent {
    },
    {
      title: 'favourites',
-     icon: 'fa-solid fa-calendar-day',
+     icon: 'fa-solid fa-heart',
      link: '/dashboard/user/favourites',
      isActive: this.isUser()
    }
  ]
-//  logOut(){
-//    localStorage.removeItem('userToken');
-//    localStorage.removeItem('role');
-//    localStorage.removeItem('userName');
-//    this.router.navigate(['/auth'])
 
-//  }
  openDialog(): void {
    const dialogRef = this.dialog.open(ChangePasswordComponent, {
      data: {},

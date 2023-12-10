@@ -85,15 +85,13 @@
             <ng-container *ngIf="item.imagePath">
               <img
                 [src]="'https://upskilling-egypt.com/' + item.imagePath"
-                class="w-50"
-                alt=""
+                class="w-25 vh-25"
               />
             </ng-container>
             <ng-container *ngIf="!item.imagePath">
               <img
                 src="../../../assets/images/dummy-image-square.jpg"
-                class="w-50"
-                alt=""
+                class="w-25 vh-25"
               />
             </ng-container>
           </td>

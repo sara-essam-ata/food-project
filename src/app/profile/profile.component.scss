@@ -1,0 +1,31 @@
+.profile{
+    background-image: url(../../assets/images/header-bg.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    // border-radius: 15px !important;
+    color: #fff;
+    position: relative;
+    img{
+        border: #fff 8px solid;
+    }
+    .profile-image{
+        position: absolute;
+        top: 40%;
+        right: 10%;
+    }
+}
+@media (max-width: 760px) {
+    .profile{
+       img{
+            border: #fff 2px solid;
+            width: 140px !important;
+        } 
+        .profile-image{
+            position: absolute;
+            top: 10%;
+            right: 15%;
+        }
+    }
+    
+}

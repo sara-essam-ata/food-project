@@ -26,12 +26,12 @@
   }
   background-color: rgba(248, 249, 251, 1) !important;
 }
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     .user-avater{
         width: 200px;
         height: 200px;
     }
     .user-name{
-        display: none;
+        display: none !important;
     }
 }

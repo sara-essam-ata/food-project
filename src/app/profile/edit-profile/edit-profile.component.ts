@@ -12,26 +12,28 @@ import { Router } from '@angular/router';
 export class EditProfileComponent implements OnInit {
   hideConfirm: boolean = true;
   imgSrc: any;
+  currentUser: any;
+
   constructor(
     private _ProfileService: ProfileService,
     private _ToastrService: ToastrService,
     private Router: Router
   ) {}
 
-  ngOnInit(
-  
-  ) { this.onSubmit(this.editProfileForm)}
-  editProfileForm = new FormGroup({
-    userName: new FormControl(null, [
+  ngOnInit() { 
+    this.getCurrentUser()
+    this.onSubmit(this.editProfileForm)}
+    editProfileForm = new FormGroup({
+    userName: new FormControl(null, [Validators.required,
       Validators.pattern('([a-zA-Z]){3,12}([0-9]{1,3})'),
     ]),
-    email: new FormControl(null, [Validators.email]),
-    country: new FormControl(null),
-    phoneNumber: new FormControl(null, [
+    email: new FormControl(null, [Validators.required,Validators.email]),
+    country: new FormControl(null, [Validators.required]),
+    phoneNumber: new FormControl(null, [Validators.required,
       Validators.pattern('^(01|01|00201)[0-2,5]{1}[0-9]{8}'),
     ]),
     profileImage: new FormControl(null),
-    confirmPassword: new FormControl(null, [
+    confirmPassword: new FormControl(null, [Validators.required,
       Validators.pattern(
         '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
       ),
@@ -57,6 +59,26 @@ export class EditProfileComponent implements OnInit {
         localStorage.setItem('userName', data.value.userName);
       },
     });
+  }
+  getCurrentUser(){
+    this._ProfileService.getCurrentUser().subscribe({
+      next:(res)=>{
+        this.currentUser = res
+        console.log(this.currentUser);
+      },error:(err)=>{
+        console.log(err);
+      },
+        complete:()=>{          
+          this.imgSrc = 'https://upskilling-egypt.com/'+this.currentUser?.profileImage,
+          this.editProfileForm.patchValue({
+            userName:this.currentUser?.userName,
+            email:this.currentUser?.email,
+            country:this.currentUser?.country,
+            phoneNumber:this.currentUser?.phoneNumber,
+          }); 
+          
+      }
+    })
   }
 
   files: File[] = [];

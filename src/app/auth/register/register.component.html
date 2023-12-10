@@ -88,6 +88,8 @@
                             class="alert alert-danger mb-3 py-0">
                               <p *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
                               class="mb-0">confirmPassword is required</p>
+                              <p *ngIf="registerForm.get('confirmPassword')?.errors?.['invalid']"
+                              class="mb-0">password & confirmPassword not match</p>
                               <p *ngIf="registerForm.get('confirmPassword')?.errors?.['pattern']"
                               class="mb-0">confirm Password must have capital,small letters,sympols,number and pass length(8-16) </p>
                         </div>

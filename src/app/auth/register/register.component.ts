@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 import { VerifyComponent } from '../verify/verify.component';
+import { ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -23,16 +24,29 @@ export class RegisterComponent implements OnInit {
     phoneNumber: new FormControl(null, [Validators.required , Validators.pattern('^(01|01|00201)[0-2,5]{1}[0-9]{8}')]),
     password: new FormControl(null, [Validators.required , Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
     confirmPassword: new FormControl(null, [Validators.required , Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
-  });
+  },{validators : this.matchPasswords});
 
   constructor(
     private _AuthService:AuthService,
     private toastr:ToastrService,
     public dialog: MatDialog    
     ){}
+
   ngOnInit(): void {
   }
-  
+
+  matchPasswords(form: any | ValidatorFn){
+    let pass = form.get(['password']);
+    let confirmPass = form.get(['confirmPassword']);
+    if(pass?.value == confirmPass?.value){
+      return null
+    }
+    else{
+      confirmPass.setErrors({invalid: 'pass & confirmPass not match'})
+      return {invalid: 'pass & confirmPass not match'}
+    }
+  }
+
   
   onSubmit(data:FormGroup){
     let myData = new FormData();
@@ -63,6 +77,8 @@ export class RegisterComponent implements OnInit {
       },
     })
   }
+
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(VerifyComponent, {
       data: {},

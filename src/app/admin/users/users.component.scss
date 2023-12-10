@@ -5,3 +5,11 @@ table{
     background-color: #E2E5EB;
     color: #1F263E;
   }
+  @media (max-width: 760px) {
+    tbody{
+      img{
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }

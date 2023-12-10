@@ -4,7 +4,7 @@
 
 .item{
     cursor: pointer;
-    padding: 5px;
+    padding: 15px 5px !important;
     margin: 0.5rem 0px;
     color: #fff;
     span{
@@ -18,9 +18,14 @@
 .row >div{
     transition: all 1s;
 }
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     .icon-name{
     display: none;
     };
+    i{
+        padding-left: 0;
+        margin-left: 0;
+        font-size: x-large;
+    }
  }
 

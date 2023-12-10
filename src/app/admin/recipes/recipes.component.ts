@@ -47,6 +47,7 @@ export class RecipesComponent implements OnInit {
       pageNumber: this.pageNumber,
       name: this.searchValue,
       tagId: this.tagId,
+      categoryId: this.categoryId
     };
     this._RecipeService.getRecipes(prams).subscribe({
       next: (res: IRecipeTable) => {

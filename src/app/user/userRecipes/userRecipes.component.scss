@@ -21,3 +21,11 @@ table{
     color: #fff;
   }
 }
+@media (max-width: 760px) {
+  tbody{
+    img{
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+}

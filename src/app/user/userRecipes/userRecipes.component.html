@@ -58,10 +58,10 @@
           <td>{{item.name}}</td>
           <td class="w-25">
             <ng-container *ngIf="item.imagePath">
-              <img [src]="'https://upskilling-egypt.com/'+item.imagePath" class="w-50 vh-50" alt="">
+              <img [src]="'https://upskilling-egypt.com/'+item.imagePath" class="w-25 vh-25" alt="">
             </ng-container>
             <ng-container *ngIf="!item.imagePath">
-              <img src="../../../assets/images/dummy-image-square.jpg" class="w-50 vh-50" alt="">
+              <img src="../../../assets/images/dummy-image-square.jpg" class="w-25 vh-25" alt="">
             </ng-container>
           </td>          
           <td>{{item.price}}</td>
