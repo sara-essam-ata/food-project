@@ -42,8 +42,8 @@
   
 <div>
   <table class="table">
-      <thead >
-        <tr  class="table-active">
+      <thead>
+        <tr class="table-active">
           <th>Name</th>
           <th>Image</th>
           <th>Price</th>
@@ -94,7 +94,9 @@
           </td>
         </tr>
       </tbody>
+      
     </table>
+
     <mat-paginator #paginator
                 class="demo-paginator"
                 (page)="handlePageEvent($event)"
@@ -104,6 +106,14 @@
                 [pageIndex]="tableResponse?.pageNumber"
                 aria-label="Select page">
       </mat-paginator>
+      <div
+      *ngIf="tableData.length == 0"
+      class="d-flex justify-content-center align-items-center"
+    >
+      <div class="w-50 vh-50 text-center">
+        <img src="../../../assets/images/delete-img.svg" class="w-50" alt="" />
+        <h3>No Data!</h3>
+      </div>
+    </div>
 </div>
 </section>
-

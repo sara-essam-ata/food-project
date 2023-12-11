@@ -8,20 +8,20 @@
                     <a class="d-block text-decoration-none" [routerLink]="item.link" routerLinkActive="bg-active" 
                     *ngIf="item.isActive">
                         <div class="item">
-                            <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i [class]="item.icon"></i></span>
+                            <span [ngClass]="{'mx-3 fs-3': !isOpened}"><i [class]="item.icon"></i></span>
                             <span class="icon-name" [ngClass]="{'d-none': !isOpened}">{{item.title}}</span>
                         </div>
                     </a>
                 </ng-container>
                     <div (click)="openDialog()" class="item">
-                        <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-lock"></i></span>
+                        <span [ngClass]="{'mx-3 fs-3': !isOpened}"><i class="fa-solid fa-lock"></i></span>
                         <span class="icon-name" [ngClass]="{'d-none': !isOpened}" class="">Change Password</span>
                     </div>
                     <div (click)="openLogoutDialog()" class="item">
-                        <span [ngClass]="{'mx-3 fs-4': !isOpened}"><i class="fa-solid fa-right-from-bracket"></i></span>
+                        <span [ngClass]="{'mx-3 fs-3': !isOpened}"><i class="fa-solid fa-right-from-bracket"></i></span>
                         <span class="icon-name" [ngClass]="{'d-none': !isOpened}" class="">Logout</span>
                     </div>
-            <app-dark></app-dark>
+                    
         </div>
     </div>
 </div>
