@@ -17,7 +17,7 @@ AddEditRecipeComponent
 export class RecipesComponent implements OnInit {
   tableResponse: IRecipeTable | undefined;
   tableData: IRecipe[] = [];
-  pageSize = 10;
+  pageSize = 5;
   pageNumber = 1;
   tagId = 0;
   categoryId = 0;
@@ -78,7 +78,7 @@ export class RecipesComponent implements OnInit {
   }
 
   handlePageEvent(e: PageEvent) {
-    this.pageNumber = e.pageIndex + 1;
+    this.pageNumber = e.pageIndex ;
     this.pageSize = e.pageSize;
     this.getTableData();
   }

@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { LogoutComponent } from '../logout/logout.component';
 
 interface IMenu{
   title:string,
@@ -18,6 +16,7 @@ interface IMenu{
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  @Output() isOpenedValue = new EventEmitter<boolean>();
   constructor(private _AuthService:AuthService, private router:Router,
     private toastr:ToastrService,public dialog: MatDialog) { }
  isOpened:boolean=true;
@@ -67,30 +66,10 @@ export class SidebarComponent {
      isActive: this.isUser()
    }
  ]
-
- openDialog(): void {
-   const dialogRef = this.dialog.open(ChangePasswordComponent, {
-     data: {},
-     width: '35%'
-   });
-
-   dialogRef.afterClosed().subscribe(result => {
-     if(result){
-       
-     }
-   });
- }  
- openLogoutDialog(): void{
-  const dialogRef = this.dialog.open(LogoutComponent, {
-    data: {},
-    width: '25%'
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    if(result){
-      
-    }
-  });
-}  
+ onClicked() {
+  this.isOpened = !this.isOpened;
+  this.isOpenedValue.emit(this.isOpened);
+  console.log(this.isOpened)
+}
  }
 

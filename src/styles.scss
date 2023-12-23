@@ -101,11 +101,6 @@ button{
 .pointer{
   cursor: pointer;
 }
-// th{
-//   padding: 20px 8px !important;
-//   background-color: #E2E5EB !important;
-//   color: #1F263E !important;
-// }
 .page-header
 {    
     background-image: url(assets/images/header-bg.png);
@@ -127,16 +122,6 @@ $light-app-theme: mat-light-theme((
                 primary: mat-palette($mat-indigo),
                 accent: mat-palette($mat-pink, A200, A100, A400),
                 warn: mat-palette($mat-red),
-                --header-background-color: #ffffff,
-                --header-border-color: #e5e8ea,
-                --header-menu-item-color: #231f20,
-                --header-theme-switch-background-color: #cccccc,
-                --nav-background-color: #f8f9fb,
-                --header-theme-switch-before-background-color: #ffffff,
-                --header-theme-switch-checked-background-color: #2196f3,
-
-                --main-content-background-color: #ffffff,
-                --main-content-text-color: #231f20,
                 )
         
 ));
@@ -146,16 +131,6 @@ $dark-app-theme:   mat-dark-theme((
                 primary: mat-palette($mat-cyan),
                 accent: mat-palette($mat-blue-gray, A200, A100, A400),
                 warn: mat-palette($mat-amber),
-                --header-background-color: #2c3c93,
-                --header-border-color: #e5e8ea,
-                --header-menu-item-color: #ffffff,
-                --header-theme-switch-background-color: #cccccc,
-                --nav-background-color: #cccccc,
-                --header-theme-switch-before-background-color: #ffffff,
-                --header-theme-switch-checked-background-color: #2196f3,
-
-                --main-content-background-color: #231f20,
-                --main-content-text-color: #ffffff,
                 ),
 ));
 
@@ -174,32 +149,27 @@ $dark-app-theme:   mat-dark-theme((
 .dark-theme {
   @include angular-material-color($dark-app-theme);
   @include body-theme($dark-app-theme);
+   // Background color for the whole page
+   body {
+    background-color: #1f263e; // Darker background color
+    color: #ffffff; // White text color for better contrast
+   }
+   #navbar{
+    background-color: #1f263e !important; // Darker background color
+    span{
+      color: #ffffff !important;
+    }
+    .dropdown{
+      .btn{
+        background-color: #1f263e !important;
+        color: #fff !important;
+      }
+    }
+   }
+   .favourite-details{
+    color: #fff;
+   }
 }
-
-// [data-theme="light"] {
-//   --header-background-color: #ffffff;
-//   --header-border-color: #e5e8ea;
-//   --header-menu-item-color: #231f20;
-//   --header-theme-switch-background-color: #cccccc;
-//   --nav-background-color: #f8f9fb;
-//   --header-theme-switch-before-background-color: #ffffff;
-//   --header-theme-switch-checked-background-color: #2196f3;
-
-//   --main-content-background-color: #ffffff;
-//   --main-content-text-color: #231f20;
-// }
-// [data-theme="dark"] {
-//   --header-background-color: #2c3c93;
-//   --header-border-color: #e5e8ea;
-//   --header-menu-item-color: #ffffff;
-//   --header-theme-switch-background-color: #cccccc;
-//   --nav-background-color: #cccccc;
-//   --header-theme-switch-before-background-color: #ffffff;
-//   --header-theme-switch-checked-background-color: #2196f3;
-
-//   --main-content-background-color: #231f20;
-//   --main-content-text-color: #ffffff;
-// }
 
 
 

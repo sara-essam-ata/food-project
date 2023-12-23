@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  userEmail:any;
 
   matchPasswords(form: any | ValidatorFn){
     let pass = form.get(['password']);
@@ -55,33 +56,25 @@ export class RegisterComponent implements OnInit {
       myData.append(key, data.value[key]);
     }
     myData.append('profileImage', this.imgSrc, this.imgSrc['name']);
-      // myData.append('userName', data.value.userName);
-      // myData.append('email', data.value.email);
-      // myData.append('country', data.value.country);
-      // myData.append('profileImage', this.imgSrc, this.imgSrc['name']);
-      // myData.append('phoneNumber', data.value.phoneNumber);
-      // myData.append('password', data.value.password);
-      // myData.append('confirmPassword', data.value.confirmPassword);
-      // console.log(myData);
-
       return this._AuthService.onRegister(myData).subscribe({
       next:(res:any)=>{
         console.log(res);
+        this.userEmail = res.email
       },
       error:(err:any)=>{
         this.toastr.error(err.error.message , 'error!');        
       },
       complete:()=> {
-        this.openDialog()
+        this.openDialog(this.userEmail)
         this.toastr.success('regisrered successfully check your mail', 'verify now');
       },
     })
   }
 
   
-  openDialog(): void {
+  openDialog(data:any): void {
     const dialogRef = this.dialog.open(VerifyComponent, {
-      data: {},
+      data: this.userEmail,
       width: '35%',
     });
 

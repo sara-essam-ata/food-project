@@ -1,6 +1,5 @@
 #navbar{
-    // background-color: rgba(248, 249, 251, 1) ;
-    background-color: var(--nav-background-color) ;
+    background-color: rgba(248, 249, 251, 1) ;
     padding: 1rem 0px;
     margin-bottom: 10px;
     border-radius: 0 0 15px 15px;
@@ -15,22 +14,19 @@
         }
     }
     span{
-        color: var(--main-content-text-color);
         color: #1F384C ;
     }
+    .dropdown{
+        .btn{
+            background-color: rgba(248, 249, 251, 1);
+            border: none;
+            color: #1E232C;
+            padding: 0;
+            // margin: 0;
+        }
+    }
 }
-.dropdown{
-  .btn{
-    // background-color: rgba(248, 249, 251, 1) !important;
-    background-color: var(--nav-background-color);
-    border: none;
-    color: #1E232C;
-    padding: 0;
-    margin: 0;
-  }
-//   background-color: rgba(248, 249, 251, 1) !important;
-background-color: var(--nav-background-color);
-}
+
 @media (max-width: 760px) {
     .user-avater{
         width: 200px;

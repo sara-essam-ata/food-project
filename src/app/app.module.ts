@@ -23,7 +23,9 @@ import { LoadingInterceptor } from './auth/interceptors/loading.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      closeButton:true
+      closeButton:true,
+      timeOut: 1000,
+      progressBar: true,
     }),
     DashboardModule,
     SharedModule,

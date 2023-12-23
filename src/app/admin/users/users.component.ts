@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  pageSize = 10;
+  pageSize = 5;
   pageNumber = 1;
   tableResponse: IUserTable| undefined;
   tableData: IUser[] = [];
@@ -86,7 +86,7 @@ export class UsersComponent implements OnInit {
   }
 
   handlePageEvent(e: PageEvent) {
-    this.pageNumber = e.pageIndex + 1;
+    this.pageNumber = e.pageIndex;
     this.pageSize = e.pageSize;
     this.getTableData();
   }

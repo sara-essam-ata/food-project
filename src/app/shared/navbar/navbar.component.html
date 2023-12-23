@@ -29,10 +29,16 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               ></a>
-
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item"  routerLink="/dashboard/profile">Profile</a></li>
-                <li><a class="dropdown-item" routerLink="/dashboard/profile/edit">Edit Profile</a></li>
+              <ul class="dropdown-menu mt-4">
+                <li><a class="dropdown-item pointer" routerLink="/dashboard/profile">
+                  <span><i class="fa-solid fa-user me-2"></i></span> Profile
+                </a></li>
+                <li><a class="dropdown-item pointer" (click)="openDialog()">
+                  <span><i class="fa-solid fa-lock me-2"></i></span> Change Password
+                </a></li>
+                <li><a class="dropdown-item pointer" (click)="openLogoutDialog()">
+                  <span><i class="fa-solid fa-right-from-bracket me-2"></i></span> Log Out
+                </a></li>
               </ul>
             </div>
           </div>

@@ -112,7 +112,7 @@
                         
                       <div class="d-flex justify-content-between mb-3">
                           <a routerLink="/auth/login" class="second-color text-decoration-none ms-5">Login Now?</a>
-                          <a (click)="openDialog()" class="main-color text-decoration-none pointer">Have code?</a>
+                          <a (click)="openDialog(userEmail)" class="main-color text-decoration-none pointer">Have code?</a>
                       </div>
                       <button  class="btn primary w-100" [disabled]="registerForm.invalid">Register</button>            
                   </form>

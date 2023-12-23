@@ -1,8 +1,10 @@
 <div class="card-auth">
   <div class="d-flex justify-content-between align-items-center pb-5">
-    <h3>Add Category</h3>
+    <h3> <span *ngIf="categoryName==''">Add</span>
+      <span *ngIf="categoryName!==''">Edit</span>
+       Category</h3>
     <span (click)="onClose()">
-      <i class="fa-regular fa-circle-xmark text-danger" routerLink="/dashboard/admin/categories"></i>
+      <i class="fa-regular fa-circle-xmark text-danger pointer" routerLink="/dashboard/admin/categories"></i>
     </span>
   </div>
   

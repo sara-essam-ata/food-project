@@ -38,6 +38,7 @@ export class VerifyComponent implements OnInit {
       },
       complete:() =>{
         this.onClose();
+        this.toastr.success('you registered successfully','done')
         this.router.navigate(['/auth/login'])
       }
     })

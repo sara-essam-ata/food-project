@@ -83,12 +83,21 @@
           <td>{{ item.creationDate | date : "dd/mm/yyyy" }}</td>
           <td class="text-center">
             <a (click)="openDeleteDialog(item)" class="text-danger"
-              ><i class="fa-regular fa-trash-can"></i
+              ><i class="fa-regular fa-trash-can pointer"></i
             ></a>
           </td>
         </tr>
       </tbody>
     </table>
+    <div
+      *ngIf="tableData.length == 0"
+      class="d-flex justify-content-center align-items-center"
+    >
+      <div class="w-50 vh-50 text-center">
+        <img src="../../../assets/images/delete-img.svg" class="w-50" alt="" />
+        <h3>No Data!</h3>
+      </div>
+    </div>
     <mat-paginator
       #paginator
       class="demo-paginator"
@@ -100,14 +109,6 @@
       aria-label="Select page"
     >
     </mat-paginator>
-    <div
-      *ngIf="tableData.length == 0"
-      class="d-flex justify-content-center align-items-center"
-    >
-      <div class="w-50 vh-50 text-center">
-        <img src="../../../assets/images/delete-img.svg" class="w-50" alt="" />
-        <h3>No Data!</h3>
-      </div>
-    </div>
+    
   </div>
 </section>

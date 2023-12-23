@@ -6,7 +6,7 @@
       >
         <h4>{{ data.name }} Details</h4>
         <span (click)="onClose()">
-          <i class="fa-regular fa-circle-xmark text-danger"></i>
+          <i class="fa-regular fa-circle-xmark text-danger pointer"></i>
         </span>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="row">
       <div class="col-6">
         <p>1-price: {{ data.price }}</p>
-        <p>2-category:{{ data.category }}</p>
+        <p>2-category:{{ data.category[0].name }}</p>
       </div>
       <div class="col-12">
         <p>3-description:{{ data.description }}</p>

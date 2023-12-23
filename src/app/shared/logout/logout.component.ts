@@ -23,6 +23,9 @@ export class LogoutComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('role');
     localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('email');
+    localStorage.removeItem('loglevel')
     this.Router.navigate(['/auth'])
   }
 }

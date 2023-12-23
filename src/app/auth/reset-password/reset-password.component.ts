@@ -37,6 +37,7 @@ constructor(private _AuthService:AuthService, private toastr:ToastrService,
       },
       complete:()=> {
         this.toastr.success('loged in successfully', 'welcome');
+        this.Router.navigate(['/auth'])
       },
     })
   }

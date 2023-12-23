@@ -150,6 +150,14 @@
         </tr>
       </tbody>
     </table>
+    <div
+      *ngIf="tableData.length == 0"
+      class="d-flex justify-content-center align-items-center">
+      <div class="w-50 vh-50 text-center">
+        <img src="../../../assets/images/delete-img.svg" class="w-50" alt="" />
+        <h3>No Data!</h3>
+      </div>
+    </div>
     <mat-paginator
       *ngIf="tableData.length > 0"
       #paginator
@@ -162,14 +170,6 @@
       aria-label="Select page"
     >
     </mat-paginator>
-    <div
-      *ngIf="tableData.length == 0"
-      class="d-flex justify-content-center align-items-center"
-    >
-      <div class="w-50 vh-50 text-center">
-        <img src="../../../assets/images/delete-img.svg" class="w-50" alt="" />
-        <h3>No Data!</h3>
-      </div>
-    </div>
+    
   </div>
 </section>

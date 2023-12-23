@@ -55,17 +55,24 @@
           <td>{{ item.creationDate | date : "dd-mm--yyyy, hh:mm a" }}</td>
           <td>{{ item.modificationDate | date : "dd-mm--yyyy, hh:mm a" }}</td>
           <td (click)="openDeleteDialog(item)" class="text-center">
-            <a><i class="fa-solid fa-calendar-xmark text-danger"></i></a>
+            <a><i class="fa-solid fa-calendar-xmark text-danger pointer"></i></a>
           </td>
           <td (click)="openEditCategory(item)" class="text-center">
-            <a><i class="fa-solid fa-pen-to-square"></i></a>
+            <a><i class="fa-solid fa-pen-to-square pointer"></i></a>
           </td>
         </tr>
       </tbody>
     </table>
+    <div
+    *ngIf="tableData?.length==0"
+    class="d-flex justify-content-center align-items-center">
+    <div class="w-50 vh-50 text-center">
+      <img src="../../../assets/images/delete-img.svg" class="w-50" alt="" />
+      <h3>No Data!</h3>
+    </div>
+  </div>
     <mat-paginator
       #paginator
-      class="demo-paginator"
       (page)="handlePageEvent($event)"
       [length]="tableResponse?.totalNumberOfRecords"
       [pageSize]="tableResponse?.pageSize"
