@@ -24,7 +24,7 @@ export class CategoriesComponent implements OnInit {
   tableResponse: ICategoryTable | undefined ;
   tableData: ICategory[] | undefined =[];
 
-  pageSize: number= 5;
+  pageSize: number= 10;
   pageNumber: number | undefined= 1;
   searchValue:string='';
 

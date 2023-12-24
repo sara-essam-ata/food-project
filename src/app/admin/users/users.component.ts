@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  pageSize = 5;
+  pageSize = 10;
   pageNumber = 1;
   tableResponse: IUserTable| undefined;
   tableData: IUser[] = [];
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
 
   constructor(private _UsersAdminService:UsersAdminService,
     private dialog:MatDialog,
-    private _ToastrService: ToastrService,
+    private toastr: ToastrService,
     private Router:Router
     ) { }
 
@@ -77,9 +77,9 @@ export class UsersComponent implements OnInit {
         console.log(res);
       }, error:(err)=>{
         console.log(err);
-        this.ToastrService.error('error')
+        this.toastr.error('error')
       }, complete: ()=>{
-        this.ToastrService.success('User deleted','Success');
+        this.toastr.success('User deleted','Success');
         this.getTableData();
       }
     })

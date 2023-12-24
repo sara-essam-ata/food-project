@@ -10,8 +10,8 @@ constructor(private _HttpClient:HttpClient) { }
     onAddToFav(id:number){
         return this._HttpClient.post('userRecipe', {recipeId: id})
     }
-    onGetAllFav(){
-        return this._HttpClient.get('userRecipe')
+    onGetAllFav(parms:any){
+        return this._HttpClient.get('userRecipe', {params:parms})
     }
     onRemoveFav(id:number){
         return this._HttpClient.delete(`userRecipe/${id}`)

@@ -19,7 +19,7 @@ export class UserRecipesComponent implements OnInit {
 
   tableResponse: IRecipeTable | undefined;
   tableData: IRecipe[] = [];
-  pageSize = 5;
+  pageSize = 10;
   pageNumber = 1;
   tagId = 0;
   categoryId = 0;
@@ -113,7 +113,12 @@ export class UserRecipesComponent implements OnInit {
   }
   myFav: any;
   getAllFav(){
-    this._FavouriteService.onGetAllFav().subscribe({
+    let parms = {
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber,
+
+    }
+      this._FavouriteService.onGetAllFav(parms).subscribe({
       next:(res: any)=>{
         console.log(res);
         this.myFav = res.data;

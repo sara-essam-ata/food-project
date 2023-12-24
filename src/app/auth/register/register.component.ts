@@ -60,11 +60,13 @@ export class RegisterComponent implements OnInit {
       next:(res:any)=>{
         console.log(res);
         this.userEmail = res.email
+        
       },
       error:(err:any)=>{
         this.toastr.error(err.error.message , 'error!');        
       },
       complete:()=> {
+
         this.openDialog(this.userEmail)
         this.toastr.success('regisrered successfully check your mail', 'verify now');
       },

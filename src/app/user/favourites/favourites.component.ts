@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FavouriteService } from './services/favourite.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-favourites',
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
 export class FavouritesComponent implements OnInit {
 
   myFav: any;
+  pageSize:Number=100;
+  pageNumber:number=1;
   constructor(
     private _FavouriteService:FavouriteService,
     private _ToastrService:ToastrService,
@@ -23,7 +26,12 @@ export class FavouritesComponent implements OnInit {
     }
 
     getAllFav(){
-      this._FavouriteService.onGetAllFav().subscribe({
+      let parms = {
+        pageSize: this.pageSize,
+        pageNumber: this.pageNumber,
+  
+      }
+      this._FavouriteService.onGetAllFav(parms).subscribe({
         next:(res: any)=>{
           console.log(res);
           this.myFav = res.data;
@@ -49,6 +57,6 @@ export class FavouritesComponent implements OnInit {
         }
       })
     }
-  
+   
 
 }
